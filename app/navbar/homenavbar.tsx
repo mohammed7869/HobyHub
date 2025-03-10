@@ -1,6 +1,5 @@
 
 import { Switch } from "@/components/ui/switch";
-import { MapPin, Pin } from "lucide-react";
 import Image from "next/image";
 
 export default function HomeNavbar() {

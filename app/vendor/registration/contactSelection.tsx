@@ -2,9 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PlayIcon, BookOpenIcon } from "lucide-react";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -19,8 +17,8 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
       const [images, setImages] = useState<string[]>([]);
       const fileInputRef = useRef<HTMLInputElement>(null);
 
-      const handleImageUpload = (event: any) => {
-        const files = Array.from(event.target.files);
+      const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from((event.target as HTMLInputElement)?.files || []);
         const newImages = files.map((file) => URL.createObjectURL(file as Blob));
         setImages([...images, ...newImages]);
       };

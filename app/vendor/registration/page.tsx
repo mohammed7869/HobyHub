@@ -2,7 +2,6 @@
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -11,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import PopupScreen from "./addInfoPopupScreen";
 import VendorNavbar from "./layouts/navbar";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SelectIcon } from "@radix-ui/react-select";
+
 import LocationPopupScreen from "./locationSelection";
 import ContactPopupScreen from "./contactSelection";
 
@@ -23,8 +22,8 @@ export default function RegistrationForm() {
   const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
 
-  const handleImageUpload = (event: any) => {
-    const files = Array.from(event.target.files);
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from((event.target as HTMLInputElement)?.files || []);
     const newImages = files.map((file) => URL.createObjectURL(file as Blob));
     setImages([...images, ...newImages]);
   };

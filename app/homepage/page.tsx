@@ -1,6 +1,5 @@
 
 import Footer from "../footer/footer";
-import HomeNavbar from "../navbar/homenavbar";
 import { Categories } from "./categories";
 import HobbyGrid from "./hobbygrid";
 

@@ -9,7 +9,7 @@ export default function Footer() {
           <h3 className="text-lg font-bold mb-4">QUICK LINKS</h3>
           <ul className="space-y-2">
             <li><a href="#" className="hover:underline">About Us</a></li>
-            <li><a href="#" className="hover:underline">FAQ's</a></li>
+            <li><a href="#" className="hover:underline">FAQs</a></li>
             <li><a href="#" className="hover:underline">Terms of Service</a></li>
             <li><a href="#" className="hover:underline">Privacy Policy</a></li>
           </ul>
