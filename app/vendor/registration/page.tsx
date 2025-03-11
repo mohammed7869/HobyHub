@@ -101,7 +101,7 @@ export default function RegistrationForm() {
                     <div className="relative justify-center text-[#cecece] text-[11.6px] font-medium">Only support ipg. ,png and.av9 and zip %es</div>
                   </div>
 
-                  <Textarea placeholder="Introduction" rows={5} className="rounded-[15px] h-[87px] mb-6 border-[#05244f]" />
+                  <Textarea placeholder="Introduction" rows={5} className="rounded-[15px] h-[120px] mb-6 border-[#05244f]" />
                 </div>
               </AccordionContent>
             </div>
@@ -109,7 +109,7 @@ export default function RegistrationForm() {
         </Accordion>
 
 
-        <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12  my-4" >
+        <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-8  my-4" >
           <div className="text-[#05244f] text-md font-bold my-4 trajan-pro">Additional information</div>
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
             <div className="flex flex-col gap-2">
@@ -134,7 +134,7 @@ export default function RegistrationForm() {
         <PopupScreen open={isOpen} setOpen={setIsOpen} setShowClassFields={setShowClassFields} />
         {showClassFields && (<>
 
-          <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12 my-4" >
+          <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-8 my-4" >
             <div className="text-[#05244f] text-md font-bold my-4 trajan-pro">Class Details</div>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex flex-col gap-2">
@@ -267,7 +267,7 @@ export default function RegistrationForm() {
           </div></>
         )}
 
-        <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-4 px-12 my-4">
+        <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-4 px-8 my-4">
           <div className="text-[#05244f] text-md trajan-pro font-bold my-4 ">Directory</div>
           <div className="bg-[#fcfcfd] rounded-[15px] outline-1 outline-offset-[-1px] p-4 outline-black">
             <DirectoryTable />
