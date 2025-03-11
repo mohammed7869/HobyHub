@@ -24,7 +24,7 @@ export default function LocationPopupScreen({ open, setOpen  }: PopupScreenProps
       <div className="flex justify-center w-full">
         <Image 
           src={'/images/map.png'} 
-          height={490} 
+          height={420} 
           width={1450} 
           className="max-w-full w-auto sm:w-[80%] object-contain mx-auto" 
           alt="Books" 
@@ -35,32 +35,32 @@ export default function LocationPopupScreen({ open, setOpen  }: PopupScreenProps
       <div className="bg-white rounded-[15px] border border-[#05244f] p-4 w-full">
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Address</Label>
-            <Input placeholder="Address" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Address</Label>
+            <Input placeholder="Address" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Joined Date</Label>
-            <Input placeholder="Joined Date" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Joined Date</Label>
+            <Input placeholder="Joined Date" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Area</Label>
-            <Input placeholder="Area" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Area</Label>
+            <Input placeholder="Area" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">City</Label>
-            <Input placeholder="City" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">City</Label>
+            <Input placeholder="City" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Code</Label>
-            <Input placeholder="Code" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Code</Label>
+            <Input placeholder="Code" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Country</Label>
-            <Input placeholder="Country" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Country</Label>
+            <Input placeholder="Country" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Pincode</Label>
-            <Input placeholder="Pincode" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Pincode</Label>
+            <Input placeholder="Pincode" className="h-[52px] border-[#05244f]" />
           </div>
         </div>
       </div>

@@ -33,35 +33,35 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
 
       {/* Form Section */}
       <div className="bg-white  p-4 w-full">
-      <div className="relative justify-start text-start text-[#05244f] text-3xl font-medium font-['Minion_Pro'] mb-4">Contact Details</div>
+      <div className="relative justify-start text-start text-[#05244f] text-2xl font-medium font-['Minion_Pro'] mb-4">Contact Details</div>
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Program Tittle</Label>
-            <Input placeholder="Program Tittle" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Program Tittle</Label>
+            <Input placeholder="Program Tittle" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
-            <Input placeholder="Institute Name" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Institute Name</Label>
+            <Input placeholder="Institute Name" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Enter Phone No.</Label>
-            <Input placeholder="Enter Phone No." className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Enter Phone No.</Label>
+            <Input placeholder="Enter Phone No." className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Enter Phone No.</Label>
-            <Input placeholder="Enter Phone No." className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Enter Phone No.</Label>
+            <Input placeholder="Enter Phone No." className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Program Tittle</Label>
-            <Input placeholder="Program Tittle" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Program Tittle</Label>
+            <Input placeholder="Program Tittle" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Program Tittle</Label>
-            <Input placeholder="Program Tittle" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Program Tittle</Label>
+            <Input placeholder="Program Tittle" className="h-[52px] border-[#05244f]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="w-[177px] text-black text-sm font-semibold">Email Address</Label>
-            <Input placeholder="Email Address" className="h-[67px] border-[#05244f]" />
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Email Address</Label>
+            <Input placeholder="Email Address" className="h-[52px] border-[#05244f]" />
           </div>
           
         </div>
@@ -72,7 +72,7 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
                                 <Image key={index} src={src} alt="Uploaded" width={224} height={224} className="rounded-md" />
                               ))}
                             </div>)}
-                            <Label className="w-[177px] text-black text-sm font-semibold">Profile photo</Label>
+                            <Label className="w-[177px] text-black text-[11.6px] font-semibold">Profile photo</Label>
                             <div
                               className="h-[222px] flex flex-col justify-between items-center py-4 my-3 rounded-[15px] border border-[#05244f] cursor-pointer p-4"
                               onClick={() => fileInputRef.current?.click()}
@@ -83,7 +83,7 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
                               </div>
           
                               {/* Middle - Text */}
-                              <div className="text-center text-[#acacac] trajan-pro text-sm font-medium">
+                              <div className="text-center text-[#acacac] trajan-pro text-[11.6px] font-medium">
                                 Drag your file(s) to start uploading
                               </div>
           
@@ -101,7 +101,7 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
                               />
                             </div>
           
-                            <div className="relative justify-center text-[#cecece] text-sm font-medium">Only support ipg. ,png and.av9 and zip %es</div>
+                            <div className="relative justify-center text-[#cecece] text-[11.6px] font-medium">Only support ipg. ,png and.av9 and zip %es</div>
                           </div>
       </div>
     </div>

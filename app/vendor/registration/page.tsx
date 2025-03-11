@@ -33,45 +33,45 @@ export default function RegistrationForm() {
     <>
       <VendorNavbar />
       <div className="mx-auto p-6">
-        <h2 className="text-[#05244f] text-[40px] font-medium text-center font-['Minion Pro'] py-2">Registration Form</h2>
-        <p className="text-center text-[#a3a4a4] text-[18.90px] font-bold trajan-pro py-3">Add details about your Institute with high-quality photos and class details</p>
+        <h2 className="text-[#05244f] text-[30px] font-medium text-center font-['Minion_Pro']">Registration Form</h2>
+        <p className="text-center text-[#a3a4a4] text-[14.90px] font-bold trajan-pro py-3">Add details about your Institute with high-quality photos and class details</p>
 
-        <Accordion type="single" collapsible>
+        <Accordion type="single" defaultValue="item-1" collapsible>
           <AccordionItem value="item-1" >
-            <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-2 px-12 mb-3">
-              <AccordionTrigger><div className="text-[#05244f] text-lg trajan-pro font-bold mb-2">Institute Details</div></AccordionTrigger>
+            <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-2 px-8 mb-3">
+              <AccordionTrigger><div className="text-[#05244f] text-md trajan-pro font-bold mb-2">Institute Details</div></AccordionTrigger>
               <AccordionContent>
                 <div  >
                   <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
                     <div className="flex flex-col gap-2">
-                      <Label className="w-[177px] text-black text-sm font-semibold">Program Title</Label>
-                      <Input placeholder="Program Title" className="h-[67px] border-[#05244f]" />
+                      <Label className="w-[177px] text-black text-[11.6px] font-semibold">Program Title</Label>
+                      <Input placeholder="Program Title" className="h-[52px] border-[#05244f]" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
-                      <Input placeholder="Institute Name" className="h-[67px] border-[#05244f]" />
+                      <Label className="w-[177px] text-black text-[11.6px] font-semibold">Institute Name</Label>
+                      <Input placeholder="Institute Name" className="h-[52px] border-[#05244f]" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <Label className="w-[177px] text-black text-sm font-semibold">Since</Label>
-                      <Input placeholder="Since" className="h-[67px] border-[#05244f]" />
+                      <Label className="w-[177px] text-black text-[11.6px] font-semibold">Since</Label>
+                      <Input placeholder="Since" className="h-[52px] border-[#05244f]" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <Label className="w-[177px] text-black text-sm font-semibold">GST No</Label>
-                      <Input placeholder="GST No." className="h-[67px] border-[#05244f]" />
+                      <Label className="w-[177px] text-black text-[11.6px] font-semibold">GST No</Label>
+                      <Input placeholder="GST No." className="h-[52px] border-[#05244f]" />
                     </div>
                   </div>
 
 
 
                   <div className="mb-6 mt-[50px]">
-                    <h3 className="text-[#05244f] trajan-pro  text-xl font-semibold">Photos</h3>
+                    <h3 className="text-[#05244f] trajan-pro  text-md font-semibold">Photos</h3>
                     {images.length > 0 && (<div className="grid grid-cols-4 gap-4 my-4 rounded-[10px]">
                       {images.map((src, index) => (
                         <Image key={index} src={src} alt="Uploaded" width={224} height={224} className="rounded-md" />
                       ))}
                     </div>)}
                     <div
-                      className="h-[222px] flex flex-col gap-3 justify-center items-center py-4 my-3 rounded-[15px] border border-dashed border-[#05244f] cursor-pointer p-4"
+                      className="h-[180px] flex flex-col gap-3 justify-center items-center py-4 my-3 rounded-[15px] border border-dashed border-[#05244f] cursor-pointer p-4"
                       onClick={() => fileInputRef.current?.click()}
                     >
                       {/* Top - Upload Icon */}
@@ -80,7 +80,7 @@ export default function RegistrationForm() {
                       </div>
 
                       {/* Middle - Text */}
-                      <div className="text-center text-[#acacac] trajan-pro text-sm font-medium">
+                      <div className="text-center text-[#acacac] trajan-pro text-[11.6px] font-medium">
                         Drag your file(s) to start uploading
                       </div>
 
@@ -98,7 +98,7 @@ export default function RegistrationForm() {
                       />
                     </div>
 
-                    <div className="relative justify-center text-[#cecece] text-sm font-medium">Only support ipg. ,png and.av9 and zip %es</div>
+                    <div className="relative justify-center text-[#cecece] text-[11.6px] font-medium">Only support ipg. ,png and.av9 and zip %es</div>
                   </div>
 
                   <Textarea placeholder="Introduction" rows={5} className="rounded-[15px] h-[87px] mb-6 border-[#05244f]" />
@@ -110,23 +110,23 @@ export default function RegistrationForm() {
 
 
         <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12  my-4" >
-          <div className="text-[#05244f] text-lg font-bold my-4 trajan-pro">Additional information</div>
+          <div className="text-[#05244f] text-md font-bold my-4 trajan-pro">Additional information</div>
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
             <div className="flex flex-col gap-2">
-              <Label className="w-[177px] text-black text-sm font-semibold">Website Name</Label>
-              <Input placeholder="Website Name" className="h-[67px] border-[#05244f]" />
+              <Label className="w-[177px] text-black text-[11.6px] font-semibold">Website Name</Label>
+              <Input placeholder="Website Name" className="h-[52px] border-[#05244f]" />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="w-[177px] text-black text-sm font-semibold">Class Level</Label>
-              <Input placeholder="Class Level" className="h-[67px] border-[#05244f]" />
+              <Label className="w-[177px] text-black text-[11.6px] font-semibold">Class Level</Label>
+              <Input placeholder="Class Level" className="h-[52px] border-[#05244f]" />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="w-[177px] text-black text-sm font-semibold">Instagram Account</Label>
-              <Input placeholder="Instagram Account" className="h-[67px] border-[#05244f]" />
+              <Label className="w-[177px] text-black text-[11.6px] font-semibold">Instagram Account</Label>
+              <Input placeholder="Instagram Account" className="h-[52px] border-[#05244f]" />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="w-[177px] text-black text-sm font-semibold">YouTube Account</Label>
-              <Input placeholder="YouTube Account" className="h-[67px] border-[#05244f]" />
+              <Label className="w-[177px] text-black text-[11.6px] font-semibold">YouTube Account</Label>
+              <Input placeholder="YouTube Account" className="h-[52px] border-[#05244f]" />
             </div>
           </div>
         </div>
@@ -135,20 +135,20 @@ export default function RegistrationForm() {
         {showClassFields && (<>
 
           <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12 my-4" >
-            <div className="text-[#05244f] text-lg font-bold my-4 trajan-pro">Class Details</div>
+            <div className="text-[#05244f] text-md font-bold my-4 trajan-pro">Class Details</div>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Class Name</Label>
-                <Input placeholder="Class Name" className="h-[67px] border-[#05244f]" />
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Class Name</Label>
+                <Input placeholder="Class Name" className="h-[52px] border-[#05244f]" />
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Category</Label>
-                <Input placeholder="Category" className="h-[67px] border-[#05244f]" />
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Category</Label>
+                <Input placeholder="Category" className="h-[52px] border-[#05244f]" />
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Sub Category</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Sub Category</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Sub Category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -161,9 +161,9 @@ export default function RegistrationForm() {
             </div>
             <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Location</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Location</Label>
                 <Select onValueChange={(value) => { if (value === 'map') setIsLocationPopupOpen(true); }}>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Location" />
                   </SelectTrigger>
                   <SelectContent>
@@ -178,14 +178,14 @@ export default function RegistrationForm() {
                 <LocationPopupScreen open={isLocationPopupOpen} setOpen={setIsLocationPopupOpen} />
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Contact</Label>
-                <Input placeholder="Contact" onFocus={() => setIsContactPopupOpen(true)} className="h-[67px] border-[#05244f]" />
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Contact</Label>
+                <Input placeholder="Contact" onFocus={() => setIsContactPopupOpen(true)} className="h-[52px] border-[#05244f]" />
               </div>
               <ContactPopupScreen open={isContactPopupOpen} setOpen={setIsContactPopupOpen} />
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Time</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Time</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Time" />
                   </SelectTrigger>
                   <SelectContent>
@@ -197,9 +197,9 @@ export default function RegistrationForm() {
 
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Institute Name</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Institute Name" />
                   </SelectTrigger>
                   <SelectContent>
@@ -212,9 +212,9 @@ export default function RegistrationForm() {
             </div>
             <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Gender</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Gender</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Gender" />
                   </SelectTrigger>
                   <SelectContent>
@@ -225,9 +225,9 @@ export default function RegistrationForm() {
 
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Age</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Age</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Age" />
                   </SelectTrigger>
                   <SelectContent>
@@ -238,9 +238,9 @@ export default function RegistrationForm() {
 
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Institute Name</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Institute Name" />
                   </SelectTrigger>
                   <SelectContent>
@@ -251,9 +251,9 @@ export default function RegistrationForm() {
 
               </div>
               <div className="flex flex-col gap-2">
-                <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
+                <Label className="w-[177px] text-black text-[11.6px] font-semibold">Institute Name</Label>
                 <Select>
-                  <SelectTrigger className="w-full h-[67px] border-[#05244f]">
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Institute Name" />
                   </SelectTrigger>
                   <SelectContent>
@@ -268,7 +268,7 @@ export default function RegistrationForm() {
         )}
 
         <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-4 px-12 my-4">
-          <div className="text-[#05244f] text-lg trajan-pro font-bold my-4 ">Directory</div>
+          <div className="text-[#05244f] text-md trajan-pro font-bold my-4 ">Directory</div>
           <div className="bg-[#fcfcfd] rounded-[15px] outline-1 outline-offset-[-1px] p-4 outline-black">
             <DirectoryTable />
           </div>

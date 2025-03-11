@@ -13,6 +13,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 export default function LoginPage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  
+  // Validate phone number length
+  const isPhoneValid = phoneNumber.length === 10 && /^\d+$/.test(phoneNumber);
   return (
     <div className="">
       <div className="text-[#4f6a85] login-title font-medium text-center mt-[10px] font-['Minion_Pro']">
@@ -39,6 +43,9 @@ export default function LoginPage() {
               <Input
                 type="text"
                 placeholder="Enter your number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/, ""))}
+                maxLength={10}
                 className="placeholder:text-[#e2e3e5] h-[48px] outline-none  rounded-l-md rounded-l-none flex-1 border border-gray-300  border-l-0"
               />
             </div>
@@ -98,13 +105,15 @@ export default function LoginPage() {
           </div>
 
           {/* Button */}
-          <Button className="mt-[26px]  sm:w-full md:w-[20%] app-bg-color text-[#d4dde8] text-sm rounded-lg border border-[#90a2b7] trajan-pro" disabled onClick={() => router.push("otp")}>
+          <Button className={`mt-[26px]  sm:w-full md:w-[20%] app-bg-color text-sm rounded-lg border border-[#90a2b7] trajan-pro ${
+          isPhoneValid ? " text-white" : " text-[#d4dde8]"
+        }`} disabled={!isPhoneValid} onClick={() => router.push("otp")}>
             Send OTP
           </Button>
         </Card>
 
         {/* Illustration */}
-        <Card className="rounded-none shadow-sm hidden md:block md:w-[585px] sm:w-[350px] max-h-[410px]">
+        <Card className="rounded-none shadow-sm hidden md:block md:w-[585px] sm:w-[350px] max-h-[380px]">
           <CardContent>
             <Carousel className="w-full">
               <CarouselContent>
@@ -116,18 +125,18 @@ export default function LoginPage() {
                         alt="Illustration"
                         width={445}
                         height={445}
-                        className="w-[418px] max-h-[380px]"
+                        className="w-[418px] max-h-[340px]"
                       />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
             </Carousel>
-            <div className="flex justify-center mt-4 space-x-2">
+            <div className="flex justify-center mt-[24px] space-x-1">
               {Array.from({ length: 5 }).map((_, index) => (
                 <button
                   key={index}
-                  className={`w-4 h-4 rounded-full transition-all ${currentIndex === index ? "bg-[#3E606C]" : "bg-[#E4E4E4]"
+                  className={`w-3 h-3 rounded-full transition-all ${currentIndex === index ? "bg-[#3E606C]" : "bg-[#E4E4E4]"
                     }`}
                   onClick={() => setCurrentIndex(index)}
                 />

@@ -6,9 +6,9 @@ export default function VendorNavbar() {
     return (
         <>
             <div className="">
-                <div className="w-full h-[89px] border-b border-[#dee2e6] flex">
+                <div className="w-full max-h-[78px] h-[64px] border-b border-[#dee2e6] flex">
                     <div className="p-4 w-[20%]  bg-[#003161] hidden md:block">
-                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={206} height={50} />
+                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={206} height={40} className="w-[180px] h-[34px]" />
                     </div>
                     <div className="bg-white px-6 gap-4 py-2 flex w-full justify-between">
                     <div className="relative w-[400px] content-center">
@@ -16,26 +16,26 @@ export default function VendorNavbar() {
                             <Image
                                 src="/Icons/searchicon.svg"
                                 alt="Search"
-                                width={16}
-                                height={17}
-                                className="absolute left-3 top-[38px] transform -translate-y-1/2"
+                                width={12}
+                                height={13}
+                                className="absolute left-4 top-[26px] transform -translate-y-1/2"
                             />
 
                             {/* Input Field */}
                             <Input
                                 placeholder="Search here..."
-                                className="placeholder:text-gray-500 bg-[#fcfcfd] w-full h-[53px] pl-10 border rounded-lg"
+                                className="placeholder:text-gray-500 bg-[#fcfcfd] w-full h-[38px] pl-10 border rounded-lg"
                             />
                         </div>
                         <div className="justify-between items-center inline-flex gap-2">
-                            <div className="w-[45px] h-[45px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
-                                <Image src="/Icons/Notification.png" alt="Logo" width={24} height={24} />
+                            <div className="w-[38px] h-[38px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
+                                <Image src="/Icons/Notification.png" alt="Logo" width={18} height={18} />
                             </div>
-                            <div className="w-[45px] h-[45px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
-                                <Image src="/Icons/Display1.png" alt="Logo" width={24} height={24} />
+                            <div className="w-[38px] h-[38px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
+                                <Image src="/Icons/Display1.png" alt="Logo" width={18} height={18} />
                             </div>
-                            <div className="w-[45px] h-[45px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
-                                <Image src="/images/profile-pooja.png" alt="Logo" width={45} height={45} />
+                            <div className="w-[38px] h-[38px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
+                                <Image src="/images/profile-pooja.png" alt="Logo" width={38} height={38} />
                             </div>
                         </div>
 

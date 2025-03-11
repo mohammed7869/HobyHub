@@ -30,25 +30,25 @@ import {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px] justify-center text-black text-[15px] font-normal trajan-pro">S No.</TableHead>
-            <TableHead className="justify-center text-black text-[15px] font-normal trajan-pro">S No.</TableHead>
-            <TableHead className="justify-center text-black text-[15px] font-normal trajan-pro">S No.</TableHead>
-            <TableHead className="justify-center text-black text-[15px] font-normal trajan-pro">S No.</TableHead>
+            <TableHead className="w-[100px] justify-center text-black text-[12px] font-normal trajan-pro">S No.</TableHead>
+            <TableHead className="justify-center text-black text-[12px] font-normal trajan-pro">S No.</TableHead>
+            <TableHead className="justify-center text-black text-[12px] font-normal trajan-pro">S No.</TableHead>
+            <TableHead className="justify-center text-black text-[12px] font-normal trajan-pro">S No.</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {invoices.map((invoice) => (
             <TableRow key={invoice.sno}>
-              <TableCell className="justify-center text-black text-[15px] font-normal trajan-pro" width={1}>{invoice.sno}</TableCell>
-              <TableCell className="justify-center text-black text-[15px] font-normal trajan-pro">{invoice.text}</TableCell>
+              <TableCell className="justify-center text-black text-[12px] font-normal trajan-pro" width={1}>{invoice.sno}</TableCell>
+              <TableCell className="justify-center text-black text-[12px] font-normal trajan-pro">{invoice.text}</TableCell>
               <TableCell width={2}>
                 <div className="flex items-center gap-2">
                     <Image src={invoice.image} height={70} width={70} alt="invoice.sno"/>
-                    <div className="justify-center text-black text-[15px] font-normal trajan-pro">{invoice.text}</div>
+                    <div className="justify-center text-black text-[12px] font-normal trajan-pro">{invoice.text}</div>
               </div>
               </TableCell>
               
-              <TableCell className="justify-center text-black text-[15px] font-normal trajan-pro">{invoice.extra}</TableCell>
+              <TableCell className="justify-center text-black text-[12px] font-normal trajan-pro">{invoice.extra}</TableCell>
             </TableRow>
           ))}
         </TableBody>

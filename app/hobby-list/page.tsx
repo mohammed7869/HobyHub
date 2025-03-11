@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Grid, List } from "lucide-react";
-import { useRouter } from "next/navigation";
+
 
 const classes = Array(6).fill({
   title: "Yoga Classes",
@@ -18,7 +18,6 @@ const classes = Array(6).fill({
 });
 
 export default function ClassDetails() {
-    const router = useRouter();
   return (
     <div className="p-6">
       
@@ -54,7 +53,7 @@ export default function ClassDetails() {
               <p className="flex justify-between mt-2"><strong>Session:</strong><p className="text-value"> {item.session}</p></p>
               <p className="flex justify-between mt-2"><strong>Gender:</strong><p className="text-value"> {item.gender}</p></p>
               <p className="flex justify-between mt-2"><strong>Price:</strong><p className="text-value"> {item.price}</p></p>
-              <Button onClick={() => router.push("hobby-list/hobby-details-page")} className="w-full app-bg-color mt-4">Inquire Now</Button>
+              <Button  className="w-full app-bg-color mt-4">Inquire Now</Button>
             </CardContent>
           </Card>
         ))}
