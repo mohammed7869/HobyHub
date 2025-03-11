@@ -280,5 +280,9 @@ color: #ABABAB;
 
       color: #212529;
     }
+
+    .login-title {
+      font-size: clamp(30px, 1vw, 16px);
+    }
 }
 
