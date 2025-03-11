@@ -16,7 +16,7 @@ export function AppSidebar() {
         const router = useRouter();
     const { isSidebarOpen, toggleSidebar } = useSidebar();
 
-    const handleNavigation= (route:any) => {
+    const handleNavigation= (route: string) => {
         router.push(route);
         toggleSidebar();
       };
