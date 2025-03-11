@@ -1,6 +1,5 @@
 "use client";
 
-import PagesNavbar from "@/app/navbar/pages-navbar";
 import { Card } from "@/components/ui/card";
 import { Inter } from "next/font/google";
 import { useState } from "react";
@@ -23,7 +22,6 @@ export default function ClassDetailsPage() {
 
   return (
     <>
-    <PagesNavbar/>
     <div className="p-6">
       
 

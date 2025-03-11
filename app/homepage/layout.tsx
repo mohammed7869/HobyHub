@@ -1,15 +1,12 @@
+"use client";
+
 import React from 'react'
-import HomeNavbar from '../navbar/homenavbar'
 
 import { ReactNode } from 'react';
-
-const layout = ({children}: {children: ReactNode}) => {
+const homepagelayout = ({children}: {children: ReactNode}) => {
   return (
-    <>
-    <HomeNavbar />
-    <div>{children}</div>
-    </>
+    <>{children}</>
   )
 }
 
-export default layout
+export default homepagelayout

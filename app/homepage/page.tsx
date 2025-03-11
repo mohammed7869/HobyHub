@@ -4,7 +4,7 @@ import { Categories } from "./categories";
 import HobbyGrid from "./hobbygrid";
 
 
-export default function Home() {
+export default function Homepage() {
   return (
       <div>
           <Categories />

@@ -13,6 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 import LocationPopupScreen from "./locationSelection";
 import ContactPopupScreen from "./contactSelection";
+import { DirectoryTable } from "./directoryList";
 
 export default function RegistrationForm() {
   const [images, setImages] = useState<string[]>([]);
@@ -38,78 +39,79 @@ export default function RegistrationForm() {
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1" >
             <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-2 px-12 mb-3">
-            <AccordionTrigger><div className="text-[#05244f] text-lg trajan-pro font-bold mb-2">Institute Details</div></AccordionTrigger>
-            <AccordionContent>
-              <div  >
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="flex flex-col gap-2">
-                    <Label className="w-[177px] text-black text-sm font-semibold">Program Title</Label>
-                    <Input placeholder="Program Title" className="h-[67px] border-[#05244f]" />
+              <AccordionTrigger><div className="text-[#05244f] text-lg trajan-pro font-bold mb-2">Institute Details</div></AccordionTrigger>
+              <AccordionContent>
+                <div  >
+                  <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
+                    <div className="flex flex-col gap-2">
+                      <Label className="w-[177px] text-black text-sm font-semibold">Program Title</Label>
+                      <Input placeholder="Program Title" className="h-[67px] border-[#05244f]" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
+                      <Input placeholder="Institute Name" className="h-[67px] border-[#05244f]" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <Label className="w-[177px] text-black text-sm font-semibold">Since</Label>
+                      <Input placeholder="Since" className="h-[67px] border-[#05244f]" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <Label className="w-[177px] text-black text-sm font-semibold">GST No</Label>
+                      <Input placeholder="GST No." className="h-[67px] border-[#05244f]" />
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <Label className="w-[177px] text-black text-sm font-semibold">Institute Name</Label>
-                    <Input placeholder="Institute Name" className="h-[67px] border-[#05244f]" />
+
+
+
+                  <div className="mb-6 mt-[50px]">
+                    <h3 className="text-[#05244f] trajan-pro  text-xl font-semibold">Photos</h3>
+                    {images.length > 0 && (<div className="grid grid-cols-4 gap-4 my-4 rounded-[10px]">
+                      {images.map((src, index) => (
+                        <Image key={index} src={src} alt="Uploaded" width={224} height={224} className="rounded-md" />
+                      ))}
+                    </div>)}
+                    <div
+                      className="h-[222px] flex flex-col gap-3 justify-center items-center py-4 my-3 rounded-[15px] border border-dashed border-[#05244f] cursor-pointer p-4"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      {/* Top - Upload Icon */}
+                      <div className="flex justify-center">
+                        <Image src={"/Icons/file-upload.svg"} alt="file-upload" height={45} width={59} />
+                      </div>
+
+                      {/* Middle - Text */}
+                      <div className="text-center text-[#acacac] trajan-pro text-sm font-medium">
+                        Drag your file(s) to start uploading
+                      </div>
+
+                      {/* Bottom - Browse Button */}
+                      <div>
+                        <Button variant="outline" className="">Browse File</Button>
+                      </div>
+
+                      <input
+                        type="file"
+                        multiple
+                        onChange={handleImageUpload}
+                        ref={fileInputRef}
+                        className="hidden"
+                      />
+                    </div>
+
+                    <div className="relative justify-center text-[#cecece] text-sm font-medium">Only support ipg. ,png and.av9 and zip %es</div>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <Label className="w-[177px] text-black text-sm font-semibold">Since</Label>
-                    <Input placeholder="Since" className="h-[67px] border-[#05244f]" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Label className="w-[177px] text-black text-sm font-semibold">GST No</Label>
-                    <Input placeholder="GST No." className="h-[67px] border-[#05244f]" />
-                  </div>
+
+                  <Textarea placeholder="Introduction" rows={5} className="rounded-[15px] h-[87px] mb-6 border-[#05244f]" />
                 </div>
-
-
-
-                <div className="mb-6 mt-[50px]">
-                  <h3 className="text-[#05244f] trajan-pro  text-xl font-semibold">Photos</h3>
-                  {images.length >0 && ( <div className="grid grid-cols-4 gap-4 my-4 rounded-[10px]">
-                    {images.map((src, index) => (
-                      <Image key={index} src={src} alt="Uploaded" width={224} height={224} className="rounded-md" />
-                    ))}
-                  </div>)}
-                  <div
-                    className="h-[222px] flex flex-col gap-3 justify-center items-center py-4 my-3 rounded-[15px] border border-dashed border-[#05244f] cursor-pointer p-4"
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    {/* Top - Upload Icon */}
-                    <div className="flex justify-center">
-                      <Image src={"/Icons/file-upload.svg"} alt="file-upload" height={45} width={59} />
-                    </div>
-
-                    {/* Middle - Text */}
-                    <div className="text-center text-[#acacac] trajan-pro text-sm font-medium">
-                      Drag your file(s) to start uploading
-                    </div>
-
-                    {/* Bottom - Browse Button */}
-                    <div>
-                      <Button variant="outline" className="">Browse File</Button>
-                    </div>
-
-                    <input
-                      type="file"
-                      multiple
-                      onChange={handleImageUpload}
-                      ref={fileInputRef}
-                      className="hidden"
-                    />
-                  </div>
-
-                  <div className="relative justify-center text-[#cecece] text-sm font-medium">Only support ipg. ,png and.av9 and zip %es</div>
-                </div>
-
-                <Textarea placeholder="Introduction" rows={5} className="rounded-[15px] h-[87px] mb-6 border-[#05244f]" />
-              </div>
-            </AccordionContent>
+              </AccordionContent>
             </div>
           </AccordionItem>
         </Accordion>
 
-        <div className="text-[#05244f] text-lg font-bold my-4">Additional information</div>
-        <div className="bg-white rounded-[15px] border border-[#05244f] p-4" >
-          <div className="grid grid-cols-2 gap-4 mb-6">
+
+        <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12  my-4" >
+          <div className="text-[#05244f] text-lg font-bold my-4 trajan-pro">Additional information</div>
+          <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
             <div className="flex flex-col gap-2">
               <Label className="w-[177px] text-black text-sm font-semibold">Website Name</Label>
               <Input placeholder="Website Name" className="h-[67px] border-[#05244f]" />
@@ -131,9 +133,10 @@ export default function RegistrationForm() {
         <Button variant="outline" className="border-[#05244f] mt-4" onClick={() => setIsOpen(true)}>+ Add Class Details</Button>
         <PopupScreen open={isOpen} setOpen={setIsOpen} setShowClassFields={setShowClassFields} />
         {showClassFields && (<>
-          <div className="text-[#05244f] text-lg font-bold my-4">Class Details</div>
-          <div className="bg-white rounded-[15px] border border-[#05244f] p-4" >
-            <div className="grid grid-cols-3 gap-4 mb-6">
+
+          <div className="bg-white rounded-[15px] border border-[#05244f] py-2 px-12 my-4" >
+            <div className="text-[#05244f] text-lg font-bold my-4 trajan-pro">Class Details</div>
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-sm font-semibold">Class Name</Label>
                 <Input placeholder="Class Name" className="h-[67px] border-[#05244f]" />
@@ -156,29 +159,29 @@ export default function RegistrationForm() {
                 </Select>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-sm font-semibold">Location</Label>
-                <Select onValueChange={(value) => { if(value === 'map') setIsLocationPopupOpen(true); }}>
+                <Select onValueChange={(value) => { if (value === 'map') setIsLocationPopupOpen(true); }}>
                   <SelectTrigger className="w-full h-[67px] border-[#05244f]">
                     <SelectValue placeholder="Location" />
                   </SelectTrigger>
                   <SelectContent>
-                  <SelectItem  value="map">Select From Map</SelectItem>
+                    <SelectItem value="map">Select From Map</SelectItem>
                     <SelectItem value="light">Pune</SelectItem>
                     <SelectItem value="dark">Nashik</SelectItem>
                     <SelectItem value="system">Mumbai</SelectItem>
-                    
+
                   </SelectContent>
                   {/* <SelectIcon><Image src={'Icons/location-pin-black.svg'} onClick={() => setIsLocationPopupOpen(true)} height={24} alt="" width={24}/></SelectIcon> */}
                 </Select>
-                <LocationPopupScreen open={isLocationPopupOpen} setOpen={setIsLocationPopupOpen}  />
+                <LocationPopupScreen open={isLocationPopupOpen} setOpen={setIsLocationPopupOpen} />
               </div>
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-sm font-semibold">Contact</Label>
-                <Input placeholder="Contact"  onFocus={() => setIsContactPopupOpen(true)} className="h-[67px] border-[#05244f]" />
+                <Input placeholder="Contact" onFocus={() => setIsContactPopupOpen(true)} className="h-[67px] border-[#05244f]" />
               </div>
-              <ContactPopupScreen open={isContactPopupOpen} setOpen={setIsContactPopupOpen}  />
+              <ContactPopupScreen open={isContactPopupOpen} setOpen={setIsContactPopupOpen} />
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-sm font-semibold">Time</Label>
                 <Select>
@@ -207,7 +210,7 @@ export default function RegistrationForm() {
                 </Select>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-sm font-semibold">Gender</Label>
                 <Select>
@@ -263,7 +266,14 @@ export default function RegistrationForm() {
             </div>
           </div></>
         )}
-        <Button className="mt-4 w-20% app-bg-color text-white float-right">
+
+        <div className="bg-white rounded-[15px] border-1 border-[#05244f] py-4 px-12 my-4">
+          <div className="text-[#05244f] text-lg trajan-pro font-bold my-4 ">Directory</div>
+          <div className="bg-[#fcfcfd] rounded-[15px] outline-1 outline-offset-[-1px] p-4 outline-black">
+            <DirectoryTable />
+          </div>
+        </div>
+        <Button className="my-4 w-20% app-bg-color text-white float-right">
           Submit
         </Button>
       </div>

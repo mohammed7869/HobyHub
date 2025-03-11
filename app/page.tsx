@@ -1,12 +1,12 @@
+"use client";
 
-import PagesNavbar from "./navbar/pages-navbar";
-import ClassDetails from "./hobby-list/hobby-list";
+import Homepage from "./homepage/page";
 
 export default function Home() {
   return (
     <>
-    <PagesNavbar/>
-    <ClassDetails/>
+    {/* <HomeNavbar/> */}
+    <Homepage/>
     </>
   );
 }

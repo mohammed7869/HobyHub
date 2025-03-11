@@ -1,8 +1,11 @@
 
 import { Switch } from "@/components/ui/switch";
 import Image from "next/image";
+import { useSidebar } from "../sidebar/sidebarContext";
+import Link from "next/link";
 
 export default function HomeNavbar() {
+    const { toggleSidebar } = useSidebar();
     return (
         <>
             <div className="hidden md:block">
@@ -41,9 +44,13 @@ export default function HomeNavbar() {
                         </div>
                     </div>
                     <div className="flex gap-4 p-4">
+                    <Link href={'/auth/login'} >
                         <Image src="/Icons/heart.svg" alt="Logo" width={25} height={25} />
+                        </Link>
+                        <Link href={'/auth/login'} >
                         <Image src="/Icons/user.svg" alt="Logo" width={25} height={25} />
-                        <div data-svg-wrapper className="justify-center items-center col:flex">
+                        </Link>
+                        <div data-svg-wrapper className="justify-center items-center col:flex" onClick={toggleSidebar}>
                             <Image src="/Icons/hamburger.svg" alt="Logo" width={25} height={25} />
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
