@@ -41,7 +41,7 @@ export default function HomeNavbar() {
                         </div>
                         <div className="px-3 w-full">
                             <div className="flex-col float-right items-center gap-2 cursor-pointer">
-                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080]"/>
+                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-8 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0"/>
                                 <Label className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</Label>
                             </div>
                         </div>

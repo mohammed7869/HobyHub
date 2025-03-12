@@ -62,7 +62,7 @@ export default function LoginPage() {
             </ul>
           </div>
 
-          <Card className="md:hidden sm:block md:w-[566px] sm:w-[350px] h-[273px]">
+          <Card className="md:hidden my-3 sm:block md:w-[566px] sm:w-[350px] h-[273px]">
             <CardContent>
               <Carousel className="w-full max-w-xs">
                 <CarouselContent>

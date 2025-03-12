@@ -1,14 +1,16 @@
 
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function VendorNavbar() {
+      const router = useRouter();
     return (
         <>
             <div className="">
                 <div className="w-full max-h-[78px] h-[64px] border-b border-[#dee2e6] flex">
                     <div className="p-4 w-[20%]  bg-[#003161] hidden md:block">
-                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={206} height={40} className="w-[180px] h-[34px]" />
+                        <Image  onClick={() => router.push("/")} src="/images/HobyHub.ai.png" alt="Logo" width={206} height={40} className="w-[180px] h-[34px]" />
                     </div>
                     <div className="bg-white px-6 gap-4 py-2 flex w-full justify-between">
                     <div className="relative w-[400px] content-center">
