@@ -6,10 +6,12 @@ import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { AuthDialog } from "../auth/login/authpopup";
+import SearchPopup from "../homepage/FilterPopup";
 
 export default function HomeNavbar() {
     const { toggleSidebar } = useSidebar();
               const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+              const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
     return (
         <>
             <div className="hidden md:block">
@@ -36,7 +38,7 @@ export default function HomeNavbar() {
                         </div>
                         <div className="w-3/12 flex items-center justify-between">
                             <div className="px-1">
-                                <button className="text-white flex items-center gap-2">
+                                <button className="text-white flex items-center gap-2" onClick={() => setIsFilterPopupOpen(true)} >
                                     <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
                                     <span className="text-[#f8f9fa] text-sm font-normal font-['Inter']">Filter</span>
                                 </button>
@@ -129,6 +131,7 @@ export default function HomeNavbar() {
                 </div>
             </div>
                       <AuthDialog open={showAuthModal} setOpen={setShowAuthModal} />
+                      <SearchPopup open={isFilterPopupOpen} setOpen={setIsFilterPopupOpen} />
         </>
     );
 }

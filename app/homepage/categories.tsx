@@ -12,26 +12,32 @@ import {
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuShortcut, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const categories = [
-    { title: "Games", img: "/images/music.png" },
-    { title: "Artistry", img: "/images/artistry.png" },
-    { title: "Martial Arts", img: "/images/music.png" },
-    { title: "Music", img: "/images/music.png" },
-    { title: "Perform", img: "/images/perform.png" },
-    { title: "Read and Write", img: "/images/readwrite.png" },
-    { title: "Cooking Class", img: "/images/music.png" },
-    { title: "Perform", img: "/images/perform.png" },
-    { title: "Read and Write", img: "/images/readwrite.png" },
-    { title: "Cooking Class", img: "/images/cooking.png" },
-        { title: "Perform", img: "/images/perform.png" },
-    { title: "Read and Write", img: "/images/readwrite.png" },
-    { title: "Cooking Class", img: "/images/cooking.png" },
+    { title: "Games", img: "/images/player-with.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Artistry", img: "/images/artistry.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Martial Arts", img: "/images/martial-art.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Music", img: "/images/music.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Perform", img: "/images/perform.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Read and Write", img: "/images/readwrite.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Cooking Class", img: "/images/kitchen-women.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Perform", img: "/images/perform.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Read and Write", img: "/images/readwrite.png",sucategories:['All','Skating','Carft','Piano'] },
+        { title: "Perform", img: "/images/perform.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Stem", img: "/images/stem.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Language", img: "/images/language.png",sucategories:['All','Skating','Carft','Piano'] },
   ];
 
 export function Categories() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+
+  const handleCategoryClick = (index: number) => {
+    setActiveCategory((prev) => (prev === index ? null : index)); // Toggle logic
+  };
 
   const scrollToIndex = (index: number) => {
     carouselApi?.scrollTo(index);
@@ -57,7 +63,7 @@ export function Categories() {
     <CarouselContent className="items-center text-center  gap-4">
       {categories.map((cat, index) => (
         <CarouselItem key={index} className="basis-1/4 sm:basis-1/3 lg:basis-1/11 md:basis-1/12 hover:-translate-y-1">
-          <div className=" pt-2 pb-[8px] flex-col justify-center items-center gap-px inline-flex">
+          {/* <div className=" pt-2 pb-[8px] flex-col justify-center items-center gap-px inline-flex">
             <Image
               src={cat.img} // Replace with your image path
               alt={cat.title}
@@ -67,8 +73,38 @@ export function Categories() {
             <div className="h-[13px] text-center text-[#003161] text-[10.87px] font-bold font-['Inter'] leading-none">
               {cat.title}
             </div>
-          </div>
+          </div> */}
+
+<DropdownMenu 
+              open={activeCategory === index} 
+              onOpenChange={(open) => setActiveCategory(open ? index : null)}
+            >
+              <DropdownMenuTrigger asChild>
+                <div
+                  className="pt-2 pb-[8px] flex-col justify-center items-center gap-px inline-flex cursor-pointer"
+                >
+                  <Image src={cat.img} alt={cat.title} width={50} height={50} />
+                  <div className="h-[13px] text-center text-[#003161] text-[10.87px] font-bold">
+                    {cat.title}
+                  </div>
+                </div>
+              </DropdownMenuTrigger>
+              
+              <DropdownMenuContent className="w-56">
+                {cat.sucategories?.length > 0 ? (
+                  cat.sucategories.map((scat, sindex) => (
+                    <DropdownMenuItem key={sindex} onClick={() => setActiveCategory(null)}>
+                      {scat}
+                    </DropdownMenuItem>
+                  ))
+                ) : (
+                  <DropdownMenuItem disabled>No Subcategories</DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          
         </CarouselItem>
+          
       ))}
         
     </CarouselContent>
