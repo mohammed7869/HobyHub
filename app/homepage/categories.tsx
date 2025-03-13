@@ -35,10 +35,6 @@ export function Categories() {
 
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
 
-  const handleCategoryClick = (index: number) => {
-    setActiveCategory((prev) => (prev === index ? null : index)); // Toggle logic
-  };
-
   const scrollToIndex = (index: number) => {
     carouselApi?.scrollTo(index);
   };
