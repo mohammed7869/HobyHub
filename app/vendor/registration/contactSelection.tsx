@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface PopupScreenProps {
   open: boolean;
@@ -50,6 +51,25 @@ export default function ContactPopupScreen({ open, setOpen  }: PopupScreenProps)
           <div className="flex flex-col gap-2">
             <Label className="w-[177px] text-black text-[11.6px] font-semibold">Enter Phone No.</Label>
             <Input placeholder="Enter Phone No." className="h-[52px] border-[#05244f]" />
+          </div>
+          <div className="flex items-center gap-2">
+            
+            <Checkbox id="terms" className="border-black"/>
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold" htmlFor="terms">Select Year</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <div  className="flex items-center gap-2">
+            <Checkbox id="b" className="border-black"/>
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold" htmlFor="b">Select Year</Label>
+            </div>
+            <div  className="flex items-center gap-2">
+            <Checkbox id="b" className="border-black"/>
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold" htmlFor="b">Select Year</Label>
+            </div>
+            <div  className="flex items-center gap-2">
+            <Checkbox id="b" className="border-black"/>
+            <Label className="w-[177px] text-black text-[11.6px] font-semibold" htmlFor="b">Select Year</Label>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <Label className="w-[177px] text-black text-[11.6px] font-semibold">Program Tittle</Label>

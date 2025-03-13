@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import LocationPopupScreen from "./locationSelection";
 import ContactPopupScreen from "./contactSelection";
 import { DirectoryTable } from "./directoryList";
+import { SelectGroup } from "@radix-ui/react-select";
 
 export default function RegistrationForm() {
   const [images, setImages] = useState<string[]>([]);
@@ -162,16 +163,17 @@ export default function RegistrationForm() {
             <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 mb-6">
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-[11.6px] font-semibold">Location</Label>
-                <Select onValueChange={(value) => { if (value === 'map') setIsLocationPopupOpen(true); }}>
+                <Select>
                   <SelectTrigger className="w-full h-[52px] border-[#05244f]">
                     <SelectValue placeholder="Location" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="map">Select From Map</SelectItem>
                     <SelectItem value="light">Pune</SelectItem>
                     <SelectItem value="dark">Nashik</SelectItem>
                     <SelectItem value="system">Mumbai</SelectItem>
-
+                    <div className="p-2 border-t border-gray-200">
+      <Button className="w-full" variant="outline" onClick={() => setIsLocationPopupOpen(true)}>+ Add New Location</Button>
+    </div>
                   </SelectContent>
                   {/* <SelectIcon><Image src={'Icons/location-pin-black.svg'} onClick={() => setIsLocationPopupOpen(true)} height={24} alt="" width={24}/></SelectIcon> */}
                 </Select>
@@ -179,7 +181,23 @@ export default function RegistrationForm() {
               </div>
               <div className="flex flex-col gap-2">
                 <Label className="w-[177px] text-black text-[11.6px] font-semibold">Contact</Label>
-                <Input placeholder="Contact" onFocus={() => setIsContactPopupOpen(true)} className="h-[52px] border-[#05244f]" />
+                {/* <Input placeholder="Contact"  className="h-[52px] border-[#05244f]" /> */}
+                <Select>
+                  
+                  <SelectTrigger className="w-full h-[52px] border-[#05244f]">
+                    <SelectValue placeholder="Contact" />
+                  </SelectTrigger>
+                  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="contact1">Contact 1</SelectItem>
+      <SelectItem value="contact2">Contact 2</SelectItem>
+      <SelectItem value="contact3">Contact 3</SelectItem>
+    </SelectGroup>
+    <div className="p-2 border-t border-gray-200">
+      <Button className="w-full" variant="outline" onClick={() => setIsContactPopupOpen(true)}>+ Add Contact</Button>
+    </div>
+  </SelectContent>
+                </Select>
               </div>
               <ContactPopupScreen open={isContactPopupOpen} setOpen={setIsContactPopupOpen} />
               <div className="flex flex-col gap-2">

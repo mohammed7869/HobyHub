@@ -15,8 +15,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const categories = [
-    { title: "Games", img: "/images/player-with.png",sucategories:['All','Skating','Carft','Piano'] },
-    { title: "Artistry", img: "/images/artistry.png",sucategories:['All','Skating','Carft','Piano'] },
+    { title: "Games", img: "/images/player-with.png",sucategories:['All','Skating','Carft','Piano',] },
+    { title: "Artistry", img: "/images/artistry.png",sucategories:['All','Skating','Carft','Piano','Pottery','Drawing','Sketch','Stiching'] },
     { title: "Martial Arts", img: "/images/martial-art.png",sucategories:['All','Skating','Carft','Piano'] },
     { title: "Music", img: "/images/music.png",sucategories:['All','Skating','Carft','Piano'] },
     { title: "Perform", img: "/images/perform.png",sucategories:['All','Skating','Carft','Piano'] },
@@ -86,7 +86,7 @@ export function Categories() {
                 </div>
               </DropdownMenuTrigger>
               
-              <DropdownMenuContent className="w-56">
+              <DropdownMenuContent className="w-56 max-h-[234px] gap-4">
                 {cat.sucategories?.length > 0 ? (
                   cat.sucategories.map((scat, sindex) => (
                     <DropdownMenuItem key={sindex} onClick={() => setActiveCategory(null)}>

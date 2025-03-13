@@ -7,11 +7,14 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { AuthDialog } from "../auth/login/authpopup";
 import SearchPopup from "../homepage/FilterPopup";
+import LocationPopup from "../homepage/locationPopup";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
 
 export default function HomeNavbar() {
     const { toggleSidebar } = useSidebar();
               const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
               const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+              const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
     return (
         <>
             <div className="hidden md:block">
@@ -20,10 +23,18 @@ export default function HomeNavbar() {
                         <Image src="/images/HobyHub.ai.png" alt="Logo" width={150} height={36} />
                     </div>
                     <div className="bg-white/10 rounded-lg px-4 gap-4 py-2 flex ">
-                        <div className="w-2/12 pl-[3.17px] pr-[3.29px] justify-center gap-[3px] items-center inline-flex">
-                            <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
-                            <div className="w-[24.95px] h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
-                        </div>
+                        <Popover>
+
+
+                            <PopoverTrigger>
+                                <div className="w-2/12 pl-[3.17px] pr-[3.29px] justify-center gap-[3px] items-center inline-flex hover:cursor-pointer" onClick={() => setIsLocationPopupOpen(true)}>
+                                    <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
+                                    <div className="w-[24.95px] h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
+
+                                </div>
+                            </PopoverTrigger>
+                            <LocationPopup open={isLocationPopupOpen} setOpen={setIsLocationPopupOpen} />
+                        </Popover>
                         <div className="w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] justify-center items-start gap-[0px] inline-flex">
                             <div className="grow shrink basis-0 self-stretch px-3 pt-[11px] pb-2 bg-white rounded-md justify-center items-center inline-flex overflow-hidden">
                                 <div className="grow shrink basis-0 h-[19px] pr-[400.72px] pt-px pb-0.5 justify-start items-center inline-flex overflow-hidden">
