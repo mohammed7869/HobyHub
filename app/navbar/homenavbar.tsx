@@ -4,9 +4,12 @@ import Image from "next/image";
 import { useSidebar } from "../sidebar/sidebarContext";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { AuthDialog } from "../auth/login/authpopup";
 
 export default function HomeNavbar() {
     const { toggleSidebar } = useSidebar();
+              const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
     return (
         <>
             <div className="hidden md:block">
@@ -59,14 +62,14 @@ export default function HomeNavbar() {
                         </div> */}
                     </div>
                     <div className="flex gap-4 p-4">
-                        <Link href={'/auth/login'} >
+                        <Link onClick={() => setShowAuthModal(true)} href={""}>
                             <Image src="/Icons/heart.svg" alt="Logo" width={25} height={25} />
                         </Link>
                         <Link href={'/auth/login'} >
                             <Image src="/Icons/user.svg" alt="Logo" width={25} height={25} />
                         </Link>
                         <div data-svg-wrapper className="justify-center items-center col:flex" onClick={toggleSidebar}>
-                            <Image src="/Icons/hamburger.svg" alt="Logo" width={25} height={25} />
+                            <Image src="/Icons/hamburger.svg" alt="Logo" width={25} height={25} className="ml-1"/>
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
                     </div>
@@ -125,6 +128,7 @@ export default function HomeNavbar() {
 
                 </div>
             </div>
+                      <AuthDialog open={showAuthModal} setOpen={setShowAuthModal} />
         </>
     );
 }

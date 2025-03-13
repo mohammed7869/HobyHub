@@ -25,7 +25,7 @@ export default function HobbyGrid() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6 py-6">
         {hobbies.map((hobby) => (
-        <div key={hobby.id} onClick={() => router.push("hobby-list/hobby-details-page")} className="rounded-2xl border-[1px] border-black/20 w-full max-w-sm mx-auto bg-white relative">
+        <div key={hobby.id} onClick={() => router.push("hobby-list/hobby-details-page")} className="rounded-2xl border-[1px] border-black/20 w-full max-w-sm mx-auto bg-white relative transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
         {/* Image Section */}
         <div className="relative">
           <img key={hobby.id}

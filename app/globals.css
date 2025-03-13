@@ -284,5 +284,10 @@ color: #ABABAB;
     .login-title {
       font-size: clamp(30px, 1vw, 16px);
     }
+
+     .blurred-dialog-overlay {
+      background: rgba(0, 0, 0, 0.1); /* Transparent dark background */
+      backdrop-filter: blur(8px); /* Apply blur */
+    }
 }
 
