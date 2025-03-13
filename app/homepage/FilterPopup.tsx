@@ -1,6 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -32,7 +31,7 @@ export default function SearchPopup({ open, setOpen }: SearchPopupProps) {
         {/* Age Input */}
         <Card className="px-3">
         <div className="space-y-2">
-          <Label className="font-semibold">What's Your Age?</Label>
+          <Label className="font-semibold">Whats Your Age?</Label>
           <Select>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Search By Age" />
