@@ -289,5 +289,23 @@ color: #ABABAB;
       background: rgba(0, 0, 0, 0.1); /* Transparent dark background */
       backdrop-filter: blur(8px); /* Apply blur */
     }
+
+
+}
+
+@layer utilities {
+  .invisible-border {
+    @apply focus-visible:ring-0 focus-visible:border-transparent focus-visible:outline-none border-none;
+  }
+
+  .search-list {
+    @apply bg-white absolute border border-t-0 border-gray-200 rounded-none shadow-lg z-999 top-27 md:top-10;
+  }
+
+  @screen sm {
+    .search-list {
+      @apply top-42;
+    }
+  }
 }
 

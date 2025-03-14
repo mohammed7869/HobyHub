@@ -1,16 +1,9 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent } from "@/components/ui/popover";
-import { Dialog, DialogHeader } from "@/components/ui/dialog";
-import { DialogContent, DialogTitle } from "@radix-ui/react-dialog";
+import {  PopoverContent } from "@/components/ui/popover";
 
-interface LPopupProps {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-}
-
-export default function LocationPopup({ open, setOpen }: LPopupProps) {
+export default function LocationPopup() {
 
   return (
 

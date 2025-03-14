@@ -54,7 +54,7 @@ export function Categories() {
     };
   }, [carouselApi]);
   return (
-    <div className="bg-white md:px-4 sm:px-2 w-full relative  border-b-1 border-gray">
+    <div className="bg-white md:px-4 sm:px-2 w-full sticky top-42 md:top-16 z-9  border-b-1 border-gray ">
   <Carousel setApi={setCarouselApi} opts={{ align: "start"  }} className="w-[90%] mx-auto mb-3">
     <CarouselContent className="items-center text-center  gap-4">
       {categories.map((cat, index) => (

@@ -9,72 +9,94 @@ import { AuthDialog } from "../auth/login/authpopup";
 import SearchPopup from "../homepage/FilterPopup";
 import LocationPopup from "../homepage/locationPopup";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { Input } from "@/components/ui/input";
 
 export default function HomeNavbar() {
     const { toggleSidebar } = useSidebar();
-              const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
-              const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
-              const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
+    const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+    const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+    const [searchText, setSearchText] = useState("");
+    const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    // Sample data (Replace with API results)
+    const options = ["Read", "Dance", "Music", "Rock Climbing", "Riding", "running", "running", "running", "running"];
+
+    // Filter results based on input
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchText(value);
+
+        if (value.length > 1) {
+            const filtered = options.filter((option) =>
+                option.toLowerCase().includes(value.toLowerCase())
+            );
+            setFilteredOptions(filtered);
+            setShowDropdown(filtered.length > 0);
+        } else {
+            setShowDropdown(false);
+        }
+    };
+
+    // Handle selection
+    const handleSelect = (option: string) => {
+        setSearchText(option);
+        setShowDropdown(false);
+    };
+    
     return (
         <>
-            <div className="hidden md:block">
+            <div className="hidden md:block sticky top-0 z-50">
                 <div className="w-full h-[67.88px] bg-[#003161] border-b border-[#dee2e6] justify-between flex">
-                    <div className="p-4">
-                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={150} height={36} />
+                    <div className="px-4 py-2 ">
+                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={210} height={48} />
                     </div>
-                    <div className="bg-white/10 rounded-lg px-4 gap-4 py-2 flex ">
-                        <Popover>
+                    <div className="bg-white/10 items-center rounded-lg px-4 gap-4 py-2 flex ">
+                        <LocationSelector />
 
-
-                            <PopoverTrigger>
-                                <div className="w-2/12 pl-[3.17px] pr-[3.29px] justify-center gap-[3px] items-center inline-flex hover:cursor-pointer" onClick={() => setIsLocationPopupOpen(true)}>
-                                    <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
-                                    <div className="w-[24.95px] h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
-
-                                </div>
-                            </PopoverTrigger>
-                            <LocationPopup open={isLocationPopupOpen} setOpen={setIsLocationPopupOpen} />
-                        </Popover>
-                        <div className="w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] justify-center items-start gap-[0px] inline-flex">
-                            <div className="grow shrink basis-0 self-stretch px-3 pt-[11px] pb-2 bg-white rounded-md justify-center items-center inline-flex overflow-hidden">
-                                <div className="grow shrink basis-0 h-[19px] pr-[400.72px] pt-px pb-0.5 justify-start items-center inline-flex overflow-hidden">
-                                    <div className="w-[42.73px] h-4 text-[#212529]/75 text-[12.88px] font-normal font-['Inter']">Search</div>
-                                </div>
-                            </div>
-                            <div data-svg-wrapper>
-                                <svg width="43" height="39" viewBox="0 0 43 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M26.8599 15.9399C26.8599 17.3743 26.3942 18.6993 25.6099 19.7743L29.5661 23.7337C29.9567 24.1243 29.9567 24.7587 29.5661 25.1493C29.1755 25.5399 28.5411 25.5399 28.1505 25.1493L24.1942 21.1899C23.1192 21.9774 21.7942 22.4399 20.3599 22.4399C16.7692 22.4399 13.8599 19.5306 13.8599 15.9399C13.8599 12.3493 16.7692 9.43994 20.3599 9.43994C23.9505 9.43994 26.8599 12.3493 26.8599 15.9399ZM20.3599 20.4399C20.9508 20.4399 21.536 20.3235 22.0819 20.0974C22.6279 19.8713 23.124 19.5398 23.5418 19.1219C23.9597 18.7041 24.2912 18.208 24.5173 17.662C24.7435 17.1161 24.8599 16.5309 24.8599 15.9399C24.8599 15.349 24.7435 14.7638 24.5173 14.2179C24.2912 13.6719 23.9597 13.1758 23.5418 12.758C23.124 12.3401 22.6279 12.0086 22.0819 11.7825C21.536 11.5563 20.9508 11.4399 20.3599 11.4399C19.7689 11.4399 19.1838 11.5563 18.6378 11.7825C18.0918 12.0086 17.5957 12.3401 17.1779 12.758C16.76 13.1758 16.4286 13.6719 16.2024 14.2179C15.9763 14.7638 15.8599 15.349 15.8599 15.9399C15.8599 16.5309 15.9763 17.1161 16.2024 17.662C16.4286 18.208 16.76 18.7041 17.1779 19.1219C17.5957 19.5398 18.0918 19.8713 18.6378 20.0974C19.1838 20.3235 19.7689 20.4399 20.3599 20.4399Z" fill="#212529" />
+                        <div className="min-w-[515px] flex-grow w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] flex items-center">
+                            {/* Input Field */}
+                            <Input
+                                type="text"
+                                placeholder="Search"
+                                value={searchText}
+                                onChange={handleSearch}
+                                className="w-full h-full px-3 text-[#212529]/75 text-[12.88px] font-normal font-['Inter'] invisible-border bg-white rounded-md"
+                            />
+                            {/* Autocomplete Dropdown */}
+                            {showDropdown && (
+                                <ul className=" w-[510px] search-list mt-1 ">
+                                    {filteredOptions.map((option, index) => (
+                                        <li
+                                            key={index}
+                                            className="p-2 text-sm text-gray-800 hover:bg-gray-100 cursor-pointer"
+                                            onClick={() => handleSelect(option)}
+                                        >
+                                            {option}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {/* Search Icon */}
+                            <div className="px-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.8599 9.93994C14.8599 11.3743 14.3942 12.6993 13.6099 13.7743L17.5661 17.7337C17.9567 18.1243 17.9567 18.7587 17.5661 19.1493C17.1755 19.5399 16.5411 19.5399 16.1505 19.1493L12.1942 15.1899C11.1192 15.9774 9.79421 16.4399 8.35986 16.4399C4.76921 16.4399 1.85986 13.5306 1.85986 9.93994C1.85986 6.34934 4.76921 3.43994 8.35986 3.43994C11.9505 3.43994 14.8599 6.34934 14.8599 9.93994ZM8.35986 14.4399C8.95076 14.4399 9.53596 14.3235 10.0819 14.0974C10.6279 13.8713 11.124 13.5398 11.5418 13.1219C11.9597 12.7041 12.2912 12.208 12.5173 11.662C12.7435 11.1161 12.8599 10.5309 12.8599 9.93994C12.8599 9.34902 12.7435 8.76381 12.5173 8.21785C12.2912 7.67189 11.9597 7.17579 11.5418 6.75796C11.124 6.34014 10.6279 6.00864 10.0819 5.78246C9.53596 5.55627 8.95076 5.43994 8.35986 5.43994C7.76896 5.43994 7.18376 5.55627 6.6378 5.78246C6.09184 6.00864 5.59574 6.34014 5.17792 6.75796C4.7601 7.17579 4.42861 7.67189 4.20242 8.21785C3.97624 8.76381 3.85986 9.34902 3.85986 9.93994C3.85986 10.5309 3.97624 11.1161 4.20242 11.662C4.42861 12.208 4.7601 12.7041 5.17792 13.1219C5.59574 13.5398 6.09184 13.8713 6.6378 14.0974C7.18376 14.3235 7.76896 14.4399 8.35986 14.4399Z"
+                                        fill="#212529"
+                                    />
                                 </svg>
                             </div>
                         </div>
-                        <div className="w-3/12 flex items-center justify-between">
-                            <div className="px-1">
-                                <button className="text-white flex items-center gap-2" onClick={() => setIsFilterPopupOpen(true)} >
-                                    <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
-                                    <span className="text-[#f8f9fa] text-sm font-normal font-['Inter']">Filter</span>
-                                </button>
-                            </div>
-                        </div>
+
+                        <FilterButton setIsFilterPopupOpen={setIsFilterPopupOpen}/>
                         <div className="px-3 w-full">
                             <div className="flex-col float-right items-center gap-2 cursor-pointer">
-                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-8 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0"/>
+                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-8 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0" />
                                 <Label className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</Label>
                             </div>
                         </div>
-                        {/* <div className="w-[62.08px] justify-center items-center inline-flex">
-                            <div data-svg-wrapper className="relative">
-                                <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
-                            </div>
-                            <div className="w-[32.28px] h-[15px] text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Filter</div>
-                        </div> */}
-
-                        {/* <div className="h-[15px] pl-[3px] pr-[35px] pt-[3px] pb-0.5  justify-center items-center col:flex">
-                        
-                        <Switch/>
-                        <div className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</div>
-                        </div> */}
                     </div>
-                    <div className="flex gap-4 p-4">
+                    <div className="flex items-center gap-4 p-4">
                         <Link onClick={() => setShowAuthModal(true)} href={""}>
                             <Image src="/Icons/heart.svg" alt="Logo" width={25} height={25} />
                         </Link>
@@ -82,14 +104,14 @@ export default function HomeNavbar() {
                             <Image src="/Icons/user.svg" alt="Logo" width={25} height={25} />
                         </Link>
                         <div data-svg-wrapper className="justify-center items-center col:flex" onClick={toggleSidebar}>
-                            <Image src="/Icons/hamburger.svg" alt="Logo" width={25} height={25} className="ml-1"/>
+                            <Image src="/Icons/hamburger.svg" alt="Logo" width={25} height={25} className="ml-1" />
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div className="md:hidden sm:block  sm:block">
+            <div className="md:hidden sm:block  sm:block sticky top-0 z-50">
                 <div className="w-full h-[169px] flex:col bg-[#003161] border-b border-[#dee2e6] justify-between">
                     <div className="justify-between flex">
                         <div className="p-4">
@@ -100,36 +122,31 @@ export default function HomeNavbar() {
                             <Image src="/Icons/user.svg" alt="Logo" width={36} height={35} />
                         </div>
                     </div>
-                    <div className="justify-between flex px-2">
-                        <div data-svg-wrapper className="flex-col text-center align-center">
+                    <div className="justify-between flex px-2 gap-3">
+                        <div data-svg-wrapper className="flex-col text-center align-center" onClick={toggleSidebar}>
                             <Image src="/Icons/hamburger.svg" className="inline-flex" alt="Logo" width={25} height={25} />
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
-                        <div className="w-[298px] h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] justify-center items-start gap-[0px] inline-flex">
-                            <div className="grow shrink basis-0 self-stretch px-3 pt-[11px] pb-2 bg-white rounded-md justify-center items-center inline-flex overflow-hidden">
-                                <div className="grow shrink basis-0 h-[19px] pr-[400.72px] pt-px pb-0.5 justify-start items-center inline-flex overflow-hidden">
-                                    <div className="w-[42.73px] h-4 text-[#212529]/75 text-[12.88px] font-normal font-['Inter']">Search</div>
-                                </div>
-                            </div>
-                            <div data-svg-wrapper>
-                                <svg width="43" height="39" viewBox="0 0 43 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M26.8599 15.9399C26.8599 17.3743 26.3942 18.6993 25.6099 19.7743L29.5661 23.7337C29.9567 24.1243 29.9567 24.7587 29.5661 25.1493C29.1755 25.5399 28.5411 25.5399 28.1505 25.1493L24.1942 21.1899C23.1192 21.9774 21.7942 22.4399 20.3599 22.4399C16.7692 22.4399 13.8599 19.5306 13.8599 15.9399C13.8599 12.3493 16.7692 9.43994 20.3599 9.43994C23.9505 9.43994 26.8599 12.3493 26.8599 15.9399ZM20.3599 20.4399C20.9508 20.4399 21.536 20.3235 22.0819 20.0974C22.6279 19.8713 23.124 19.5398 23.5418 19.1219C23.9597 18.7041 24.2912 18.208 24.5173 17.662C24.7435 17.1161 24.8599 16.5309 24.8599 15.9399C24.8599 15.349 24.7435 14.7638 24.5173 14.2179C24.2912 13.6719 23.9597 13.1758 23.5418 12.758C23.124 12.3401 22.6279 12.0086 22.0819 11.7825C21.536 11.5563 20.9508 11.4399 20.3599 11.4399C19.7689 11.4399 19.1838 11.5563 18.6378 11.7825C18.0918 12.0086 17.5957 12.3401 17.1779 12.758C16.76 13.1758 16.4286 13.6719 16.2024 14.2179C15.9763 14.7638 15.8599 15.349 15.8599 15.9399C15.8599 16.5309 15.9763 17.1161 16.2024 17.662C16.4286 18.208 16.76 18.7041 17.1779 19.1219C17.5957 19.5398 18.0918 19.8713 18.6378 20.0974C19.1838 20.3235 19.7689 20.4399 20.3599 20.4399Z" fill="#212529" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div className="w-[62.08px]  justify-center items-center col:flex">
+                        <SearchInput
+                        searchText={searchText}
+                        handleSearch={handleSearch}
+                        showDropdown={showDropdown}
+                        filteredOptions={filteredOptions}
+                        handleSelect={handleSelect}
+                    />
+
+                        {/* <div className="w-[62.08px]  justify-center items-center col:flex">
                             <div data-svg-wrapper className="relative">
                                 <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
                             </div>
                             <div className="w-[32.28px] h-[15px] text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Filter</div>
-                        </div>
+                        </div> */}
+
+<FilterButton setIsFilterPopupOpen={setIsFilterPopupOpen}/>
                     </div>
 
                     <div className="bg-white/10 rounded-lg flex p-2 justify-between items-center">
-                        <div className="pl-[3.17px] pr-[3.29px] justify-center gap-[3px] inline-flex">
-                            <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
-                            <div className="w-[24.95px] h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
-                        </div>
+                        <LocationSelector />
                         <div className="pl-[3px] pr-[35px] pt-[3px] pb-0.5 rounded-[20px] shadow-[0px_4px_6px_0px_rgba(0,0,0,0.10)] justify-between items-center inline-flex gap-2">
                             {/* <div className="w-2.5 h-2.5 bg-white rounded-[5px]" ></div> */}
 
@@ -141,8 +158,84 @@ export default function HomeNavbar() {
 
                 </div>
             </div>
-                      <AuthDialog open={showAuthModal} setOpen={setShowAuthModal} />
-                      <SearchPopup open={isFilterPopupOpen} setOpen={setIsFilterPopupOpen} />
+            <AuthDialog open={showAuthModal} setOpen={setShowAuthModal} />
+            <SearchPopup open={isFilterPopupOpen} setOpen={setIsFilterPopupOpen} />
         </>
     );
+}
+
+const SearchInput = ({ searchText, handleSearch, showDropdown, filteredOptions, handleSelect }: any) => {
+    return (
+        <div className="min-w-[297px] md:w-[515px] flex-grow w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] flex items-center">
+                            {/* Input Field */}
+                            <Input
+                                type="text"
+                                placeholder="Search"
+                                value={searchText}
+                                onChange={handleSearch}
+                                className="w-full h-full px-3 text-[#212529]/75 text-[12.88px] font-normal font-['Inter'] invisible-border bg-white rounded-md"
+                            />
+                            {/* Autocomplete Dropdown */}
+                            {showDropdown && (
+                                <ul className=" w-[510px] search-list mt-1 ">
+                                    {filteredOptions.map((option: string, index: number) => (
+                                        <li
+                                            key={index}
+                                            className="p-2 text-sm text-gray-800 hover:bg-gray-100 cursor-pointer"
+                                            onClick={() => handleSelect(option)}
+                                        >
+                                            {option}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {/* Search Icon */}
+                            <div className="px-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.8599 9.93994C14.8599 11.3743 14.3942 12.6993 13.6099 13.7743L17.5661 17.7337C17.9567 18.1243 17.9567 18.7587 17.5661 19.1493C17.1755 19.5399 16.5411 19.5399 16.1505 19.1493L12.1942 15.1899C11.1192 15.9774 9.79421 16.4399 8.35986 16.4399C4.76921 16.4399 1.85986 13.5306 1.85986 9.93994C1.85986 6.34934 4.76921 3.43994 8.35986 3.43994C11.9505 3.43994 14.8599 6.34934 14.8599 9.93994ZM8.35986 14.4399C8.95076 14.4399 9.53596 14.3235 10.0819 14.0974C10.6279 13.8713 11.124 13.5398 11.5418 13.1219C11.9597 12.7041 12.2912 12.208 12.5173 11.662C12.7435 11.1161 12.8599 10.5309 12.8599 9.93994C12.8599 9.34902 12.7435 8.76381 12.5173 8.21785C12.2912 7.67189 11.9597 7.17579 11.5418 6.75796C11.124 6.34014 10.6279 6.00864 10.0819 5.78246C9.53596 5.55627 8.95076 5.43994 8.35986 5.43994C7.76896 5.43994 7.18376 5.55627 6.6378 5.78246C6.09184 6.00864 5.59574 6.34014 5.17792 6.75796C4.7601 7.17579 4.42861 7.67189 4.20242 8.21785C3.97624 8.76381 3.85986 9.34902 3.85986 9.93994C3.85986 10.5309 3.97624 11.1161 4.20242 11.662C4.42861 12.208 4.7601 12.7041 5.17792 13.1219C5.59574 13.5398 6.09184 13.8713 6.6378 14.0974C7.18376 14.3235 7.76896 14.4399 8.35986 14.4399Z"
+                                        fill="#212529"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+    );
+};
+
+const LocationSelector = () => {
+    return(
+    <Popover>
+
+
+                            <PopoverTrigger>
+                                <div className="w-2/12 min-w-[50px] flex-shrink-0 justify-center gap-[3px] items-center inline-flex hover:cursor-pointer">
+                                    <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
+                                    <div className="h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
+
+                                </div>
+
+                                {/* <div className="pl-[3.17px] pr-[3.29px] justify-center gap-[3px] inline-flex">
+                            <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
+                            <div className="h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
+                        </div> */}
+                            </PopoverTrigger>
+                            <LocationPopup />
+                        </Popover>
+                        
+    )
+};
+
+
+const FilterButton = ({ setIsFilterPopupOpen }: any) => {
+    return (
+<div className="md:w-3/12 min-w-[62.08px] md:flex md:flex-row flex-col items-center justify-between">
+    <div className="px-1">
+        <button className="text-white flex md:flex-row flex-col items-center gap-2" onClick={() => setIsFilterPopupOpen(true)}>
+            <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
+            <span className="text-[#f8f9fa] text-sm font-normal font-['Inter']">Filter</span>
+        </button>
+    </div>
+</div>
+
+    )
 }
