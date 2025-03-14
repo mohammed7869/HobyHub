@@ -47,9 +47,9 @@ export default function HomeNavbar() {
     return (
         <>
             <div className="hidden md:block sticky top-0 z-50">
-                <div className="w-full h-[67.88px] bg-[#003161] border-b border-[#dee2e6] justify-between flex">
-                    <div className="px-4 py-2 ">
-                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={210} height={48} />
+                <div className="w-full py-2 h-[67.88px] bg-[#003161] border-b border-[#dee2e6] justify-between flex">
+                    <div className="w-20 pl-[2.25rem]">
+                        <Image src="/images/HobyHub.ai.png" alt="Logo" width={220} height={48} />
                     </div>
                     <div className="bg-white/10 items-center rounded-lg px-4 gap-4 py-2 flex ">
                         <LocationSelector />
