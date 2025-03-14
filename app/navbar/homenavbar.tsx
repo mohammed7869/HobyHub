@@ -164,7 +164,15 @@ export default function HomeNavbar() {
     );
 }
 
-const SearchInput = ({ searchText, handleSearch, showDropdown, filteredOptions, handleSelect }: any) => {
+type SearchInputProps = {
+    searchText: string;
+    handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    showDropdown: boolean;
+    filteredOptions: string[]; // Adjust the type if your options are objects
+    handleSelect: (value: string) => void; // Update the type as per your data
+  };
+
+const SearchInput = ({ searchText, handleSearch, showDropdown, filteredOptions, handleSelect }: SearchInputProps) => {
     return (
         <div className="min-w-[297px] md:w-[515px] flex-grow w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] flex items-center">
                             {/* Input Field */}
@@ -225,8 +233,11 @@ const LocationSelector = () => {
     )
 };
 
+type FilterButtonProps = {
+    setIsFilterPopupOpen: (value: boolean) => void; // Update the type as per your data
+  };
 
-const FilterButton = ({ setIsFilterPopupOpen }: any) => {
+const FilterButton = ({ setIsFilterPopupOpen }: FilterButtonProps) => {
     return (
 <div className="md:w-3/12 min-w-[62.08px] md:flex md:flex-row flex-col items-center justify-between">
     <div className="px-1">
