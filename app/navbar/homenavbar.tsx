@@ -111,7 +111,7 @@ export default function HomeNavbar() {
 
                 </div>
             </div>
-            <div className="md:hidden sm:block  sm:block sticky top-0 z-50">
+            <div className="md:hidden  sm:block sticky top-0 z-50">
                 <div className="w-full h-[169px] flex:col bg-[#003161] border-b border-[#dee2e6] justify-between">
                     <div className="justify-between flex">
                         <div className="p-4">
@@ -122,7 +122,7 @@ export default function HomeNavbar() {
                             <Image src="/Icons/user.svg" alt="Logo" width={36} height={35} />
                         </div>
                     </div>
-                    <div className="justify-between flex px-2 gap-3">
+                    <div className="justify-between flex px-1 gap-1">
                         <div data-svg-wrapper className="flex-col text-center align-center" onClick={toggleSidebar}>
                             <Image src="/Icons/hamburger.svg" className="inline-flex" alt="Logo" width={25} height={25} />
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
@@ -239,7 +239,7 @@ type FilterButtonProps = {
 
 const FilterButton = ({ setIsFilterPopupOpen }: FilterButtonProps) => {
     return (
-<div className="md:w-3/12 min-w-[62.08px] md:flex md:flex-row flex-col items-center justify-between">
+<div className="md:w-3/12 md:flex md:flex-row flex-col items-center justify-between">
     <div className="px-1">
         <button className="text-white flex md:flex-row flex-col items-center gap-2" onClick={() => setIsFilterPopupOpen(true)}>
             <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />

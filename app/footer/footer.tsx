@@ -24,13 +24,13 @@ export default function Footer() {
         </div>
 
         {/* Social Media */}
-        <div className="text-center">
+        <div>
           <h3 className="text-white text-lg font-bold font-['Inter'] uppercase leading-normal mb-4">SOCIAL MEDIA</h3>
-          <div className="flex flex-col items-center space-y-4">
-            <a href="#" className="flex items-center space-x-2 hover:text-gray-300">
+          <div className="flex flex-col space-y-4">
+            <a href="#" className="flex space-x-2 hover:text-gray-300">
               <Facebook /> <span className="text-white text-[12.19px] font-normal font-['Inter']">Facebook</span>
             </a>
-            <a href="#" className="flex items-center space-x-2 hover:text-gray-300">
+            <a href="#" className="flex space-x-2 hover:text-gray-300">
               <Instagram /> <span className="text-white text-[12.19px] font-normal font-['Inter']">Instagram</span>
             </a>
           </div>

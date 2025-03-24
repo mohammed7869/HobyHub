@@ -8,13 +8,13 @@ import { useRef, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import PopupScreen from "./addInfoPopupScreen";
-import VendorNavbar from "./layouts/navbar";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 import LocationPopupScreen from "./locationSelection";
 import ContactPopupScreen from "./contactSelection";
 import { DirectoryTable } from "./directoryList";
 import { SelectGroup } from "@radix-ui/react-select";
+import VendorNavbar from "../layouts/navbar";
 
 export default function RegistrationForm() {
   const [images, setImages] = useState<string[]>([]);

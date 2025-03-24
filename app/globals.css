@@ -290,6 +290,11 @@ color: #ABABAB;
       backdrop-filter: blur(8px); /* Apply blur */
     }
 
+    .sticky {
+      position: sticky;
+      position: -webkit-sticky;
+    }
+
 
 }
 

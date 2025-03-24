@@ -37,7 +37,7 @@ export default function VendorNavbar() {
                                 <Image src="/Icons/Display1.png" alt="Logo" width={18} height={18} />
                             </div>
                             <div className="w-[38px] h-[38px] relative bg-[#c8daeb] rounded-full justify-center items-center flex" >
-                                <Image src="/images/profile-pooja.png" alt="Logo" width={38} height={38} />
+                                <Image src="/images/profile-pooja.png" alt="Logo" width={38} height={38} onClick={() => router.push("/vendor/profile")}/>
                             </div>
                         </div>
 
