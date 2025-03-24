@@ -112,19 +112,19 @@ export default function HomeNavbar() {
                 </div>
             </div>
             <div className="md:hidden  sm:block sticky top-0 z-50">
-                <div className="w-full h-[169px] flex:col bg-[#003161] border-b border-[#dee2e6] justify-between">
+                <div className="w-full h-[128px] flex:col bg-[#003161] border-b border-[#dee2e6] justify-between">
                     <div className="justify-between flex">
-                        <div className="p-4">
+                        <div className="p-1">
                             <Image src="/images/HobyHub.ai.png" alt="Logo" width={152} height={36} />
                         </div>
-                        <div className="flex gap-4 p-4">
+                        <div className="flex gap-2 p-1">
                             <Image src="/Icons/heart.svg" alt="Logo" width={24} height={30} />
-                            <Image src="/Icons/user.svg" alt="Logo" width={36} height={35} />
+                            <Image src="/Icons/user.svg" alt="Logo" width={24} height={30} />
                         </div>
                     </div>
                     <div className="justify-between flex px-1 gap-1">
                         <div data-svg-wrapper className="flex-col text-center align-center" onClick={toggleSidebar}>
-                            <Image src="/Icons/hamburger.svg" className="inline-flex" alt="Logo" width={25} height={25} />
+                            <Image src="/Icons/hamburger.svg" className="inline-flex" alt="Logo" width={22} height={22} />
                             <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
                         <SearchInput
@@ -145,13 +145,13 @@ export default function HomeNavbar() {
 <FilterButton setIsFilterPopupOpen={setIsFilterPopupOpen}/>
                     </div>
 
-                    <div className="bg-white/10 rounded-lg flex p-2 justify-between items-center">
+                    <div className="bg-white/10 flex px-2 py-[2px] justify-between items-center mt-[8px]">
                         <LocationSelector />
-                        <div className="pl-[3px] pr-[35px] pt-[3px] pb-0.5 rounded-[20px] shadow-[0px_4px_6px_0px_rgba(0,0,0,0.10)] justify-between items-center inline-flex gap-2">
+                        <div className="pl-[3px] pt-[3px] pb-0.5 rounded-[20px] shadow-[0px_4px_6px_0px_rgba(0,0,0,0.10)] justify-between items-center inline-flex gap-2">
                             {/* <div className="w-2.5 h-2.5 bg-white rounded-[5px]" ></div> */}
 
                             <div className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</div>
-                            <Switch />
+                            <Switch className="w-[3.2em] w-15 data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-10 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0"/>
                         </div>
 
                     </div>
@@ -241,8 +241,8 @@ const FilterButton = ({ setIsFilterPopupOpen }: FilterButtonProps) => {
     return (
 <div className="md:w-3/12 md:flex md:flex-row flex-col items-center justify-between">
     <div className="px-1">
-        <button className="text-white flex md:flex-row flex-col items-center gap-2" onClick={() => setIsFilterPopupOpen(true)}>
-            <Image src="/Icons/filter.svg" alt="Logo" width={30} height={22} />
+        <button className="text-white flex md:flex-row flex-col items-center" onClick={() => setIsFilterPopupOpen(true)}>
+            <Image src="/Icons/filter.svg" alt="Logo" width={28} height={20} />
             <span className="text-[#f8f9fa] text-sm font-normal font-['Inter']">Filter</span>
         </button>
     </div>

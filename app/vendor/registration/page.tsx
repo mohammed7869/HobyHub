@@ -32,7 +32,7 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <VendorNavbar />
+      {/* <VendorNavbar /> */}
       <div className="mx-auto p-6">
         <h2 className="text-[#05244f] text-[30px] font-medium text-center font-['Minion_Pro']">Registration Form</h2>
         <p className="text-center text-[#a3a4a4] text-[14.90px] font-bold trajan-pro py-3">Add details about your Institute with high-quality photos and class details</p>
@@ -66,9 +66,9 @@ export default function RegistrationForm() {
 
                   <div className="mb-6 mt-[50px]">
                     <h3 className="text-[#05244f] trajan-pro  text-md font-semibold">Photos</h3>
-                    {images.length > 0 && (<div className="grid grid-cols-4 gap-4 my-4 rounded-[10px]">
+                    {images.length > 0 && (<div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-4 rounded-[10px]">
                       {images.map((src, index) => (
-                        <Image key={index} src={src} alt="Uploaded" width={224} height={224} className="rounded-md" />
+                        <Image key={index} src={src} alt="Uploaded" width={158} height={158} className="rounded-md h-[158px] w-[158x] md:w-[224px] h-[224px]" />
                       ))}
                     </div>)}
                     <div
