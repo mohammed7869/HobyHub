@@ -14,7 +14,6 @@ import LocationPopupScreen from "./locationSelection";
 import ContactPopupScreen from "./contactSelection";
 import { DirectoryTable } from "./directoryList";
 import { SelectGroup } from "@radix-ui/react-select";
-import VendorNavbar from "../layouts/navbar";
 
 export default function RegistrationForm() {
   const [images, setImages] = useState<string[]>([]);
