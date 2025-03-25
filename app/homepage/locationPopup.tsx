@@ -2,7 +2,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {  PopoverContent } from "@/components/ui/popover";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, } from "react";
 import { Libraries, LoadScript, StandaloneSearchBox } from "@react-google-maps/api";
 import useLocation from "../hooks/useLocation";
 
@@ -11,10 +11,9 @@ const GOOGLE_API_KEY = "AIzaSyBiXRza3cdC49oDky7hLyXPqkQhaNM4yts";
 
 interface PopupScreenProps {
   onLocationChange: (location: string) => void;
-  defaultLocation: string;
 }
 
-export default function LocationPopup({onLocationChange, defaultLocation}: PopupScreenProps) {
+export default function LocationPopup({onLocationChange}: PopupScreenProps) {
 
   const { location, setLocation, detectLocation } = useLocation();
   const searchBoxRef = useRef<google.maps.places.SearchBox | null>(null);

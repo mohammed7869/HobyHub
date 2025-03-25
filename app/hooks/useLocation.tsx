@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const GOOGLE_API_KEY = "AIzaSyBiXRza3cdC49oDky7hLyXPqkQhaNM4yts"; // Replace with your API Key
 
 const useLocation = () => {
-    const [location, setLocation] = useState("Detecting...");
+    const [location, setLocation] = useState("");
   
     const getAddressFromCoordinates = async (lat: number, lng: number) => {
       try {
