@@ -10,7 +10,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-    const router = useRouter();
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div className="">
@@ -26,7 +26,7 @@ export default function LoginPage() {
           <div className="bg-[#fefefe] rounded-[7px] border-[3px] border-[#dddfe3] px-[14px] py-[18px] mt-[23px]">
             {/* Phone Input */}
             <label className="text-[#9d9d9d] text-[12.80px] font-bold trajan-pro">Enter OTP</label>
-            <div className="flex flex-row  mt-1 gap-4">
+            <div className="flex flex-row flex-wrap  mt-1 gap-4">
               {/* <span className="text-gray-600  px-3">+91</span> */}
               {/* <Input
                 type="number"
@@ -49,17 +49,15 @@ export default function LoginPage() {
                 placeholder=""
                 className="items-center border border-gray-300 rounded-md outline-none flex-1 w-15 h-15"
               /> */}
-              <InputOTP
-        maxLength={6}
-        
-      >
-        <InputOTPGroup className="mt-1 gap-4">
-          <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={0} />
-          <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={1} />
-          <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={2} />
-          <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={3} />
-        </InputOTPGroup>
-      </InputOTP>
+
+              <InputOTP maxLength={6}>
+                <InputOTPGroup className="flex flex-wrap  gap-2 md:gap-4">
+                  <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={0} />
+                  <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={1} />
+                  <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={2} />
+                  <InputOTPSlot className=" text-black text-2xl font-bold font-['Trajan_Pro'] items-center border border-gray-300 rounded-md outline-none flex-1 w-28 h-15" index={3} />
+                </InputOTPGroup>
+              </InputOTP>
             </div>
 
             <p className="text-[#c9c9c9] text-sm trajan-pro mt-2">
@@ -76,7 +74,7 @@ export default function LoginPage() {
             </ul>
           </div>
 
-          <Card className="md:hidden sm:block md:w-[566px] sm:w-[350px] h-[273px]">
+          <Card className="md:hidden my-3 sm:block md:w-[566px] sm:w-[350px] h-[273px]">
             <CardContent>
               <Carousel className="w-full max-w-xs">
                 <CarouselContent>
@@ -109,7 +107,7 @@ export default function LoginPage() {
             </CardContent>
           </Card>
           {/* Checkbox & Policy */}
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex items-center gap-2 mt-[15px]">
             <Checkbox id="terms" />
             <label htmlFor="terms" className="text-[#c6c7c7] text-xs trajan-pro font-bold">
               By proceeding, you agree to our

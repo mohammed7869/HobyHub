@@ -31,7 +31,7 @@ export default function LocationPopup({onLocationChange}: PopupScreenProps) {
   
   return (
 
-    <LoadScript googleMapsApiKey={GOOGLE_API_KEY} libraries={libraries}>
+    <LoadScript googleMapsApiKey={GOOGLE_API_KEY} libraries={libraries} >
     <PopoverContent className="w-[300px] shadow-md p-4">
       <h3 className="text-lg font-semibold">Choose your location</h3>
       <p className="text-gray-500 text-sm">Select a location to see hobby options</p>
