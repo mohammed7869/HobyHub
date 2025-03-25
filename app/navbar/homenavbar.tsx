@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useSidebar } from "../sidebar/sidebarContext";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthDialog } from "../auth/login/authpopup";
 import SearchPopup from "../homepage/FilterPopup";
 import LocationPopup from "../homepage/locationPopup";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
+import useLocation from "../hooks/useLocation";
 
 export default function HomeNavbar() {
     const { toggleSidebar } = useSidebar();
@@ -18,6 +19,9 @@ export default function HomeNavbar() {
     const [searchText, setSearchText] = useState("");
     const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState("Pune");
+
+    const [isOnline, setIsOnline] = useState(false); 
 
     // Sample data (Replace with API results)
     const options = ["Read", "Dance", "Music", "Rock Climbing", "Riding", "running", "running", "running", "running"];
@@ -52,7 +56,7 @@ export default function HomeNavbar() {
                         <Image src="/images/HobyHub.ai.png" alt="Logo" width={220} height={48} />
                     </div>
                     <div className="bg-white/10 items-center rounded-lg px-4 gap-4 py-2 flex ">
-                        <LocationSelector />
+                        <LocationSelector location={selectedLocation} />
 
                         <div className="min-w-[515px] flex-grow w-7/12 h-[44.38px] p-[3.19px] bg-white rounded-md shadow-[0px_8px_16px_0px_rgba(0,0,0,0.15)] flex items-center">
                             {/* Input Field */}
@@ -91,8 +95,9 @@ export default function HomeNavbar() {
                         <FilterButton setIsFilterPopupOpen={setIsFilterPopupOpen}/>
                         <div className="px-3 w-full">
                             <div className="flex-col float-right items-center gap-2 cursor-pointer">
-                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-8 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0" />
-                                <Label className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</Label>
+                                <Switch className="w-[3.2em] data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-8 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0" 
+                               onCheckedChange={(checked) => setIsOnline(checked)}  />
+                                <Label className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]"> {isOnline ? "Online Classes" : "Offline Classes"}</Label>
                             </div>
                         </div>
                     </div>
@@ -150,12 +155,16 @@ export default function HomeNavbar() {
                     </div>
 
                     <div className="bg-white/10 flex px-2 py-[2px] justify-between items-center mt-[8px]">
-                        <LocationSelector />
+                        <LocationSelector location={selectedLocation} />
                         <div className="pl-[3px] pt-[3px] pb-0.5 rounded-[20px] shadow-[0px_4px_6px_0px_rgba(0,0,0,0.10)] justify-between items-center inline-flex gap-2">
                             {/* <div className="w-2.5 h-2.5 bg-white rounded-[5px]" ></div> */}
 
-                            <div className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">Offline Classes</div>
-                            <Switch className="w-[3.2em] w-15 data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-10 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0"/>
+                            <Label className="text-center text-[#f8f9fa] text-[9.94px] font-normal font-['Inter'] leading-[18px]">
+                                    {isOnline ? "Online Classes" : "Offline Classes"}
+                                </Label>
+
+                            <Switch className="w-[3.2em] w-15 data-[state=checked]:bg-[#1e90ff] data-[state=unchecked]:bg-[#808080] [&_[data-slot='switch-thumb']]:data-[state=checked]:translate-x-10 [&_[data-slot='switch-thumb']]:data-[state=unchecked]:translate-x-0" checked={isOnline} // Bind to state
+                                    onCheckedChange={(checked) => setIsOnline(checked)} />
                         </div>
 
                     </div>
@@ -214,27 +223,34 @@ const SearchInput = ({ searchText, handleSearch, showDropdown, filteredOptions, 
     );
 };
 
-const LocationSelector = () => {
-    return(
-    <Popover>
+const LocationSelector = ({ location }: { location: string }) => {
+    const { location: choosedLocation, setLocation: setChoosedLocation, detectLocation } = useLocation(); 
+    const [isPopoverOpen, setIsPopoverOpen] = useState(false); 
 
+    useEffect(() => {
+        if (!choosedLocation) {
+            detectLocation();  // ✅ Fetch location when component mounts
+        }
+    }, [choosedLocation, detectLocation]);
 
-                            <PopoverTrigger>
-                                <div className="w-2/12 min-w-[50px] flex-shrink-0 justify-center gap-[3px] items-center inline-flex hover:cursor-pointer">
-                                    <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
-                                    <div className="h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
+    const handleLocationChange = (newLocation: string) => {
+        setChoosedLocation(newLocation);
+        setIsPopoverOpen(false);  // ✅ Close Popover after selection
+    };
 
-                                </div>
-
-                                {/* <div className="pl-[3.17px] pr-[3.29px] justify-center gap-[3px] inline-flex">
-                            <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
-                            <div className="h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">Pune</div>
-                        </div> */}
-                            </PopoverTrigger>
-                            <LocationPopup />
-                        </Popover>
-                        
-    )
+    return (
+        <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+            <PopoverTrigger onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+                <div className="w-2/12 min-w-[50px] flex-shrink-0 justify-center gap-[3px] items-center inline-flex hover:cursor-pointer">
+                    <Image src="/Icons/location.svg" alt="Logo" width={13} height={15} />
+                    <div className="h-[18px] text-center text-[#f8f9fa] text-[10.31px] font-normal font-['Inter'] leading-[18px]">
+                        {choosedLocation || "Detecting..."}  {/* ✅ Show "Detecting..." until location is set */}
+                    </div>
+                </div>
+            </PopoverTrigger>
+            <LocationPopup onLocationChange={handleLocationChange} defaultLocation={choosedLocation} />
+        </Popover>
+    );
 };
 
 type FilterButtonProps = {

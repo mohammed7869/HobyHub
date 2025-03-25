@@ -2,23 +2,34 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {  PopoverContent } from "@/components/ui/popover";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Libraries, LoadScript, StandaloneSearchBox } from "@react-google-maps/api";
+import useLocation from "../hooks/useLocation";
 
 const libraries: Libraries = ["places"];
 const GOOGLE_API_KEY = "AIzaSyBiXRza3cdC49oDky7hLyXPqkQhaNM4yts";
 
-export default function LocationPopup() {
+interface PopupScreenProps {
+  onLocationChange: (location: string) => void;
+  defaultLocation: string;
+}
 
-  const [location, setLocation] = useState("");
+export default function LocationPopup({onLocationChange, defaultLocation}: PopupScreenProps) {
+
+  const { location, setLocation, detectLocation } = useLocation();
   const searchBoxRef = useRef<google.maps.places.SearchBox | null>(null);
+  
+
 
   const handlePlacesChanged = () => {
     const places = searchBoxRef.current?.getPlaces();
     if (places && places.length > 0) {
-      setLocation(places[0].formatted_address || "");
+      const selectedLocation = places?.[0]?.address_components?.[1]?.long_name || "";
+      setLocation(selectedLocation);
+      onLocationChange(selectedLocation);
     }
   };
+  
   return (
 
     <LoadScript googleMapsApiKey={GOOGLE_API_KEY} libraries={libraries}>
@@ -41,7 +52,7 @@ export default function LocationPopup() {
       <div className="mt-4 space-y-2">
         <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Search By Location</Button>
         <hr />
-        <Button className="w-full bg-yellow-500 text-black hover:bg-yellow-600">Detect My Location</Button>
+        <Button className="w-full bg-yellow-500 text-black hover:bg-yellow-600" onClick={detectLocation}>Detect My Location</Button>
       </div>
     </PopoverContent>
   </LoadScript>
