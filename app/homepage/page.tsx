@@ -17,9 +17,11 @@ export default function Homepage() {
                   </div>
               </div> */}
               <Select value="10">
-                  <SelectTrigger className="self-stretch pl-[10px] pr-[5px] bg-white rounded-[5px] border-2 border-[#bfbebe] justify-start items-center inline-flex max-h-[30px] text-black text-[13.12px] font-semibold font-['Inter'] leading-[14px] [&_svg:last-child]:hidden">
-                  <SelectValue  />
-                  <ChevronDown className="w-4 h-4 text-black peer-focus:text-black" />
+                  <SelectTrigger className="self-stretch pl-[10px] pr-[5px] bg-white rounded-[5px] border-2 border-[#bfbebe] justify-between items-center inline-flex min-w-[144px] md:min-w-[74px] max-h-[30px] text-black text-[13.12px] font-semibold font-['Inter'] leading-[14px] [&_svg:last-child]:hidden">
+                      <div className="flex-1 text-center"> {/* Center the text */}
+                          <SelectValue />
+                      </div>
+                      <ChevronDown className="w-4 h-4 text-black peer-focus:text-black" />
                   </SelectTrigger>
                   <SelectContent>
                       <SelectItem value="2">2 KM</SelectItem>
@@ -33,8 +35,10 @@ export default function Homepage() {
                   </div>
               </div> */}
               <Select value="2">
-                  <SelectTrigger className="self-stretch pl-[10px] pr-[5px] bg-white rounded-[5px] border-2 border-[#bfbebe] justify-start items-center inline-flex max-h-[30px] text-black text-[13.12px] font-semibold font-['Inter'] leading-[14px] [&_svg:last-child]:hidden">
-                      <SelectValue  />
+                  <SelectTrigger className="self-stretch pl-[10px] pr-[5px] bg-white rounded-[5px] border-2 border-[#bfbebe] justify-between  min-w-[144px] md:min-w-[149px] items-center inline-flex max-h-[30px] text-black text-[13.12px] font-semibold font-['Inter'] leading-[14px] [&_svg:last-child]:hidden">
+                  <div className="flex-1 text-center"> {/* Center the text */}
+                  <SelectValue />
+                  </div>
                       <ChevronDown className="w-4 h-4 text-black peer-focus:text-black" />
                   </SelectTrigger>
                   <SelectContent>

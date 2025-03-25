@@ -118,14 +118,18 @@ export default function HomeNavbar() {
                             <Image src="/images/HobyHub.ai.png" alt="Logo" width={152} height={36} />
                         </div>
                         <div className="flex gap-2 p-1">
+                        <Link onClick={() => setShowAuthModal(true)} href={""}>
                             <Image src="/Icons/heart.svg" alt="Logo" width={24} height={30} />
+                            </Link>
+                            <Link href={'/auth/login'} >
                             <Image src="/Icons/user.svg" alt="Logo" width={24} height={30} />
+                            </Link>
                         </div>
                     </div>
                     <div className="justify-between flex px-1 gap-1">
                         <div data-svg-wrapper className="flex-col text-center align-center" onClick={toggleSidebar}>
                             <Image src="/Icons/hamburger.svg" className="inline-flex" alt="Logo" width={22} height={22} />
-                            <div className="text-[#f8f9fa] text-sm font-normal font-['Inter'] leading-snug">Menu</div>
+                            <div className="text-[#f8f9fa]  text-[11px] md:text-sm font-normal font-['Inter'] leading-snug">Menu</div>
                         </div>
                         <SearchInput
                         searchText={searchText}
@@ -243,7 +247,7 @@ const FilterButton = ({ setIsFilterPopupOpen }: FilterButtonProps) => {
     <div className="px-1">
         <button className="text-white flex md:flex-row flex-col items-center" onClick={() => setIsFilterPopupOpen(true)}>
             <Image src="/Icons/filter.svg" alt="Logo" width={28} height={20} />
-            <span className="text-[#f8f9fa] text-sm font-normal font-['Inter']">Filter</span>
+            <span className="text-[#f8f9fa] text-[11px] md:text-sm font-normal font-['Inter']">Filter</span>
         </button>
     </div>
 </div>

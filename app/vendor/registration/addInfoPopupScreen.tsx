@@ -21,14 +21,14 @@ export default function PopupScreen({ open, setOpen, setShowClassFields  }: Popu
           <Card onClick={() => {
               setShowClassFields(true);
               setOpen(false); // Close dialog after clicking
-            }} className="w-55 p-4 cursor-pointer hover:shadow-lg">
+            }} className="w-40 md:w-55 p-4 cursor-pointer hover:shadow-lg">
             <CardContent className="flex flex-col items-center gap-2">
             <Image src={'/Icons/Video.svg'} height={56} width={56} alt="Books" />
               <h3 className="text-lg font-semibold">Class Details</h3>
               <p className="text-gray-500 text-sm">Provide class-related information</p>
             </CardContent>
           </Card>
-          <Card className="w-55 p-4 cursor-pointer hover:shadow-lg">
+          <Card className="w-40 md:w-55 p-4 cursor-pointer hover:shadow-lg">
             <CardContent className="flex flex-col items-center gap-2">
               <Image src={'/Icons/Books.svg'} height={56} width={56} alt="Books" />
               <h3 className="text-lg font-semibold">Course Form</h3>
