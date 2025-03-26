@@ -9,7 +9,6 @@ import { Separator } from "@/components/ui/separator";
 
 // Menu items.
 const menuItems = [
-  
   { name: 'Search',showHr:true, submenus: [
     { name: "Hobby Class",  link: "/hobby-list",isDisabled:false  },
     { name: "PlayZones (Coming Soon)",  link: "/",isDisabled:true  },
