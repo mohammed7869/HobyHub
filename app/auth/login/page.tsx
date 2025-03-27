@@ -127,6 +127,7 @@ export default function LoginPage() {
                         className="w-[418px] max-h-[320px]"
                       />
                     </div>
+                    
                   </CarouselItem>
                 ))}
               </CarouselContent>
